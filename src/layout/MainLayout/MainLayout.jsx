@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 
 const MainLayout = () => {
-  const auth = true;
+  const auth = false;
   return (
     <div>
       {!auth ? (

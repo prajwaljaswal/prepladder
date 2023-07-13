@@ -22,7 +22,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<Login />} />
+          <Route index element={<searchPage />} />
         </Route>
 
         <Route path="/searchPage" element={<AuthLayout />}>

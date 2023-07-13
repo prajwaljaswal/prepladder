@@ -1,0 +1,35 @@
+.gen{
+    margin-top: 1rem;
+}
+.generalInformation-container-input{
+    display: flex;
+    gap: 3px;
+    margin-left: -2rem;
+}
+.input-generalInformation{
+    width:2rem
+}
+
+.select-generalInformation{
+    width:100%
+}
+.generalInformation-textArea{
+    
+    height: 5rem !important;
+
+}
+
+.gen-2{
+    margin-top: 4rem;
+}
+.generalinformation-second-container{
+    margin-right: 20px;
+}
+
+.generalInformation-Radio{
+    display: flex;
+    gap:17px;
+}
+.generalInformation-Radio input{
+margin-left: 3px;
+}

@@ -1,0 +1,16 @@
+.projectMangedBy-input{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.projectMangedBy-col{
+    width: 9rem !important;
+}
+
+.projectMangedBy-ruler{
+    border-top: 1px solid #000000;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

@@ -1,0 +1,74 @@
+
+.sidebar{
+    width: 16rem;
+    height: calc(100vh);
+    background-color: #0084A3;  
+    
+    
+}
+.sidebar-element{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    gap: 1rem;
+    color: white;
+    font-size: 14px;
+    padding-top: 1rem;
+    font-weight: 600;
+
+
+}
+.drawer-background{
+    background-color: #0084A3 !important;    
+}
+.menu-button{
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+@media screen and (min-width: 900px) {
+    .menu-button {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .sidebar {
+      display: none;
+    }
+  }
+/* 
+  .accordion-button{
+  border: none !important;
+  color: white !important;
+  padding: 0px !important;
+  background-color: #0084A3 !important;
+  border: none !important;
+  }
+  .accordion-body{
+    padding: 0px !important;
+    
+  }
+  .accordion-item{
+  border-radius: 0px !important;
+  border: none !important;
+  background-color: #0084A3 !important;
+  
+  }
+
+  .accordion-button{
+    border: none !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    
+  } */
+
+  .master-data-list div{
+    padding-top: 7px;
+    font-size: 16px;
+    font-weight: 200;
+  }
+
+  .master-data-list div:hover{
+    cursor: pointer;
+  }

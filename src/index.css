@@ -1,0 +1,265 @@
+@import "../src/components/header/header.css";
+@import "../src/components/Sidebar/sidebar.css";
+@import "../src/components/Tab/tab.css";
+@import"../src/components/common/AddNewProject/AddNewProject.css";
+@import "../src/components/dashboard/dashboard.css";
+@import "../src/components/GeneralInformation/generalInformation.css";
+@import "../src/components/common/DashboardTitle/dashboardTitle";
+@import "../src/components/clientDetails/clientDetails.css";
+@import "../src/components/ProjectMangedBy/projectManaged.css";
+@import "../src/components/common/SaveAndContinue/SaveAndContinue.css";
+@import"../src/components/Meetings/Meetings.css";
+@import "../src/components/ProjectResource/ProjectResource.css";
+@import "../src/components/BillingInfo/BillingInfo.css";
+@import "../src/components/MonthlyBillableHours/MonthlyBillableHours.css";
+@import"../src/components/TechStack/TechStack.css";
+@import"../src/components/ChangeRequest/changeRequest.css";
+@import "../src/components/common/MasterData/MasterDataTitle/MasterDataTitle.css";
+@import "../src/components/common/MasterData/Heading/Heading.css";
+@import "../src/components/common/MasterData/CancelAndSave/CancelAndSave.css";
+@import"../src/components/common/Pagination/pagination.css";
+@import "../src/components/common/Datatable/loading.css";
+
+html,body{
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  align-self: flex-start;
+
+}
+
+.button-cancel{
+  background-color: #ffff;
+  border: 1px solid #BCBCBC;
+  padding-left: 2rem;
+  padding-right: 2rem;
+ 
+}
+
+.guru{
+  border: solid 1px;
+}
+
+
+.master-head{
+  background-color: #F0FBFE!important;
+  color: #0086AF !important;
+  font-weight: 300 !important;
+}
+
+
+table {
+  border: solid 1px;
+}
+
+
+select{
+  border-color:  #9B9797;
+  width: 119px;
+  height: 23px;
+  
+}
+
+.upload-image{
+  border: 1px solid #9B9797;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary{
+  background-color: #00C2F0 !important;
+  border: none !important;
+  padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
+}
+
+
+
+* {
+  margin: 0px;
+ 
+}
+
+.LoginPageContainer {
+  height: 100vh;
+  overflow: auto;
+}
+
+.LoginPageInnerContainer {
+  display: flex;
+  min-height: 100%;
+}
+
+.LoginPageInnerContainer .ImageContianer {
+  width: 25%;
+  background-color: #e1dfec;
+  min-height: 100%;
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginPageInnerContainer .ImageContianer .GroupImage {
+  width: 100%;
+  display: block;
+}
+
+.LoginPageInnerContainer .LoginFormContainer {
+  flex-grow: 2;
+  background-color: white;
+  min-height: 100%;
+  padding: 5%;
+  background: url(https://i.imgur.com/BKyjjFa.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .LogoContainer .logo {
+  height: 60px;
+  margin-bottom: 30px;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .header {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .subHeader {
+  color: #9aa4ad;
+  margin-top: 5px;
+  margin-bottom: 40px;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .inputContainer {
+  color: #3f3f45;
+  margin: 20px 0px;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .inputContainer .label {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 7px;
+  margin-bottom: 10px;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .inputContainer .label .labelIcon {
+  width: 20px;
+  margin-right: 10px;
+  display: block;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .inputContainer .input {
+  display: block;
+  width: calc(100% - 20px);
+  font-size: 15px;
+  padding: 10px;
+  border: 1px solid #d6d7db;
+  border-radius: 5px;
+  margin-top: 5px;
+  outline: 0px !important;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .OptionsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.LoginFormContainer {
+  display: flex;
+  align-items: center;
+}
+
+.LoginFormInnerContainer {
+  max-width: 500px;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .checkbox {
+  width: 15px;
+  height: 15px;
+  margin: 0px;
+  display: block;
+  border: 1px solid #d6d7db;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .checkboxContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .checkboxContainer label {
+  display: block;
+  padding: 0px 5px;
+  color: #9aa4ad;
+}
+
+.LoginPageInnerContainer .LoginFormContainer .ForgotPasswordLink {
+  color: #e7483b;
+  text-decoration: none;
+}
+
+.LoginFormContainer .LoginFormInnerContainer .LoginButton {
+  margin-top: 30px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #2e1f7a;
+  border: 0px;
+  outline: 0px;
+  cursor: pointer;
+}
+
+.LoginFormContainer .LoginFormInnerContainer .LoginButton:active {
+  background-color: #4520ff;
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .LoginPageInnerContainer .ImageContianer {
+      width: 50%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .LoginPageInnerContainer .ImageContianer {
+      display: none;
+  }
+
+  .LoginFormContainer {
+      justify-content: center;
+  }
+}
+.LoginPageContainer::-webkit-scrollbar {
+  width: 5px;
+}
+
+.LoginPageContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.LoginPageContainer::-webkit-scrollbar-thumb {
+  background: #2e1f7a;
+}
+
+.LoginPageContainer::-webkit-scrollbar-thumb:hover {
+  background: #4520ff;
+}
+
+

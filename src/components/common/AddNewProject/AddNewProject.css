@@ -1,0 +1,20 @@
+.new-project-container{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 12px;
+    margin-top: 1rem;
+}
+.project-title{
+    font-weight: 500;
+    font-size: 17px;
+}
+.project-subTitle{
+    color: #0086AF;
+    font-weight: 500;
+    font-size: 17px;
+    display: flex;
+}
+.back-arrow{
+    padding-top: 4px;
+    padding-right: 3px;
+}

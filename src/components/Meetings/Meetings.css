@@ -1,0 +1,21 @@
+.meeting-input{
+    width: 100%;
+}
+
+.meeting-col{
+    width: 8rem !important;
+}
+.meeting-textArea{
+    width: 100%;
+    height: 6rem;
+}
+
+.meeting-ruler{
+    border-top: 1px solid #000000;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.meeting-span{
+    padding-left: 10px !important;
+    
+}

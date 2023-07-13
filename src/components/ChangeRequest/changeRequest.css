@@ -1,0 +1,10 @@
+.change-request-input{
+    width: 100% !important;
+}
+.change-request-col{
+    width: 8rem !important;
+}
+.change-request-textarea{
+    width: 100%;
+    height: 4.5rem;
+}

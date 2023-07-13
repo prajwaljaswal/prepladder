@@ -1,0 +1,17 @@
+.save-continue{
+    background-color: white;
+    
+}
+
+.save-button{
+    background-color: #00C2F0;
+    color: #FFFFFF;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}

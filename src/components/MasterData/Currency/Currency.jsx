@@ -22,7 +22,10 @@ const Currency = () => {
   const [pageIndex, setpageIndex] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const [image, setImage] = useState("");
+  const [imageError,setImageError]  = useState("");
   const [fileToShowCurrency, setFileToShowCurrency] = useState("");
+
+
 
   const editTable = (name, id, imageUrl) => {
     setProjectStatus(name);
@@ -36,6 +39,11 @@ const Currency = () => {
     let err = false;
     if (projectStatus.length < 1) {
       setError("*Currency is required");
+      err = true;
+    }
+
+    if(image.length<1){
+      setImageError("*Image is required");
       err = true;
     }
     if (!projectStatus.match("^[a-zA-Z ]*$")) {
@@ -66,6 +74,7 @@ const Currency = () => {
         setLoading(true);
         await ADD_CURRENCY(formData).then((res) => {
           setError("");
+          setImageError("");
         });
         await GET_CURRENCY(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
@@ -77,6 +86,7 @@ const Currency = () => {
         await ADD_CURRENCY(formData).then((res) => {
           setError("");
           setImage("");
+          setImageError("");
         });
         await GET_CURRENCY(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
@@ -185,6 +195,7 @@ const Currency = () => {
     setError("");
     setIsEdit(false);
     setFileToShowCurrency("");
+    setImageError("");
   };
 
   useEffect(()=>{
@@ -206,6 +217,7 @@ const Currency = () => {
         setImage={setImage}
         image={image}
         edit={isEdit}
+        imageError={imageError}
         fileToShowCurrency={fileToShowCurrency}
         setFileToShowCurrency={setFileToShowCurrency}
       />

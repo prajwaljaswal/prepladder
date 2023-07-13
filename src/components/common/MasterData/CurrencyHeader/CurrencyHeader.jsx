@@ -9,12 +9,17 @@ import {MdCancel} from "react-icons/md"
 
 
 
-const CurrencyHeader = ({title,addTitle,name,inputValue, setInputValue,submit,error,cancel,setImage,edit,setFileToShowCurrency,fileToShowCurrency}) => {
+const CurrencyHeader = ({title,addTitle,name,inputValue, setInputValue,submit,error,cancel,setImage,edit,setFileToShowCurrency,fileToShowCurrency,imageError}) => {
 const [fileToShow, setFileToShow] = useState(fileToShowCurrency)
 const clearFile = ()=>{
   setFileToShow("")
   setFileToShowCurrency("")
+  setImage("")
 }
+
+useEffect(()=>{
+  setFileToShow(fileToShowCurrency)
+},[fileToShowCurrency])
 
   return (
     <div className='container'>
@@ -45,12 +50,11 @@ const clearFile = ()=>{
               }} className='d-none'/>
             <div for = "file"><img src={Uploads} alt="images"/></div>
             </label>
+            <div className='small text-danger'>{imageError}</div>
             </div>
 
             <div style={{marginLeft:"3rem" ,marginTop:"1rem"}}>
-            { fileToShow ? <><img src = {fileToShow} width={100} height={100} alt ="preview"/> <MdCancel color='red' style={{position:"absolute" , marginTop:"-.55rem" }} onClick={()=>{
-              setFileToShow("")
-            }}/></> : "" }
+            { fileToShow ? <><img src = {fileToShow} width={100} height={100} alt ="preview"/> <MdCancel color='red' style={{position:"absolute" , marginTop:"-.55rem" }} onClick={clearFile}/></> : "" }
             </div>
             </Col>
         </Row>

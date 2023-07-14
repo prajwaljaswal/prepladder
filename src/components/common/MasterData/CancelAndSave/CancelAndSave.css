@@ -1,17 +1,14 @@
-.cancel-save{
-    margin-right: 1rem;
+.cancel-save {
+  margin-right: 1rem;
 }
-.cancel-save-container{
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-
+.cancel-save-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
-
 
 @media screen and (max-width: 600px) {
-    .cancel-save-container{
-     justify-content: center;
-     
-   }
- }
+  .cancel-save-container {
+    justify-content: center;
+  }
+}

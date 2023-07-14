@@ -1,7 +1,7 @@
-import React from "react";
-import { Table } from "react-bootstrap";
-import Edit from "../../../../assests/edit.svg";
-import Delete from "../../../../assests/deleteNew.svg";
+import React from 'react';
+import { Table } from 'react-bootstrap';
+import Edit from '../../../../assests/edit.svg';
+import Delete from '../../../../assests/deleteNew.svg';
 
 const MasterDataTable = ({ heading, tableData }) => {
   return (

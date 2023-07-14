@@ -1,10 +1,10 @@
-import React from "react";
-import AddProjectSearch from "../common/AddNewProject/AddProjectSearch";
+import React from 'react';
+import AddProjectSearch from '../common/AddNewProject/AddProjectSearch';
 
 const SearchPage = () => {
   return (
     <div>
-    <AddProjectSearch/>
+      <AddProjectSearch />
     </div>
   );
 };

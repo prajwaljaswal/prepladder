@@ -1,10 +1,12 @@
-import React from 'react'
-import MasterDataDashboard from '../components/MasterData/MasterDataDashboard/MasterDataDashboard'
+import React from 'react';
+import MasterDataDashboard from '../components/MasterData/MasterDataDashboard/MasterDataDashboard';
 
 const MasterDataDashboardPage = () => {
   return (
-    <div><MasterDataDashboard/></div>
-  )
-}
+    <div>
+      <MasterDataDashboard />
+    </div>
+  );
+};
 
-export default MasterDataDashboardPage
+export default MasterDataDashboardPage;

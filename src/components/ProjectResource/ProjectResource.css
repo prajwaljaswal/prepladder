@@ -1,27 +1,25 @@
-.resource-required{
-font-size: 15px;
-font-weight: 700;
-letter-spacing: 0em;
-
-
+.resource-required {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0em;
 }
 
-.resource-core{
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0em;
-        }
+.resource-core {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0em;
+}
 
-.resource-ruler{
-        border-top: 1px solid #000000;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }
- .resource-col{
-        width: 8rem !important;
- }
+.resource-ruler {
+  border-top: 1px solid #000000;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.resource-col {
+  width: 8rem !important;
+}
 
- .resource-box{
-border:solid 1px;
- padding:0.35rem;
- }
+.resource-box {
+  border: solid 1px;
+  padding: 0.35rem;
+}

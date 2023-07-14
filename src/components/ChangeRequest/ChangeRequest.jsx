@@ -1,14 +1,14 @@
-import React from "react";
-import { Row, Col } from "react-bootstrap";
-import DashboardTitle from "../common/DashboardTitle/DashboardTitle";
-import Input from "../common/Input/Input";
-import Select from "../common/Select/Select";
-import Uploads from "../../assests/upload.svg";
-import SaveAndContinue from "../common/SaveAndContinue/SaveAndContinue";
+import React from 'react';
+import { Row, Col } from 'react-bootstrap';
+import DashboardTitle from '../common/DashboardTitle/DashboardTitle';
+import Input from '../common/Input/Input';
+import Select from '../common/Select/Select';
+import Uploads from '../../assests/upload.svg';
+import SaveAndContinue from '../common/SaveAndContinue/SaveAndContinue';
 const ChangeRequest = () => {
   return (
     <div>
-      <DashboardTitle title={"Change Request"} />
+      <DashboardTitle title={'Change Request'} />
       <div className="container mt-3">
         <Row>
           <Col className="d-flex justify-content-end">
@@ -22,18 +22,16 @@ const ChangeRequest = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"text"} className={"change-request-input"} />
+            <Input type={'text'} className={'change-request-input'} />
           </Col>
 
           <Col lg={2} className="change-request-col">
             Estimated Efforts
           </Col>
 
-          <Col
-            lg={4}
-            className="d-flex flex-start" >
+          <Col lg={4} className="d-flex flex-start">
             <Input type="text" />
-            <Select option={["Minutes", "Hour", "Days", "Months", "Years"]} />
+            <Select option={['Minutes', 'Hour', 'Days', 'Months', 'Years']} />
           </Col>
         </Row>
 
@@ -43,15 +41,15 @@ const ChangeRequest = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"date"} className={"change-request-input"} />
+            <Input type={'date'} className={'change-request-input'} />
           </Col>
 
-          <Col lg={2}className="change-request-col">
+          <Col lg={2} className="change-request-col">
             Planned End Date
           </Col>
 
           <Col lg={4}>
-            <Input type={"date"} className={"change-request-input"} />
+            <Input type={'date'} className={'change-request-input'} />
           </Col>
         </Row>
 
@@ -60,27 +58,27 @@ const ChangeRequest = () => {
             <div className="d-flex gap-1">
               <div>Actual UAT</div>
               <div>
-                {" "}
-                <Input type="checkbox" className={"change-request-input"} />
+                {' '}
+                <Input type="checkbox" className={'change-request-input'} />
               </div>
             </div>
           </Col>
 
           <Col lg={4}>
-            <Input type="date" className={"change-request-input"} />
+            <Input type="date" className={'change-request-input'} />
           </Col>
           <Col lg={2} className="meeting-col">
             <div className="d-flex gap-1">
               <div>Actual Live</div>
               <div>
-                {" "}
-                <Input type="checkbox" className={"change-request-input"} />
+                {' '}
+                <Input type="checkbox" className={'change-request-input'} />
               </div>
             </div>
           </Col>
 
           <Col lg={4}>
-            <Input type={"date"} className={"change-request-input"} />
+            <Input type={'date'} className={'change-request-input'} />
           </Col>
         </Row>
 
@@ -89,8 +87,8 @@ const ChangeRequest = () => {
             Reason If any Delay in Start Date
           </Col>
 
-          <Col lg={4} >
-            <textarea className="change-request-textarea" ></textarea>
+          <Col lg={4}>
+            <textarea className="change-request-textarea"></textarea>
           </Col>
 
           <Col lg={2} className="change-request-col">
@@ -107,7 +105,7 @@ const ChangeRequest = () => {
             Attachment
           </Col>
 
-          <Col lg={4} >
+          <Col lg={4}>
             <div className="d-flex justify-content-center gap-3 upload-image">
               <div>Upload Docx</div>
               <div className="">
@@ -121,7 +119,7 @@ const ChangeRequest = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"text"} className={"change-request-input"} />
+            <Input type={'text'} className={'change-request-input'} />
           </Col>
         </Row>
 

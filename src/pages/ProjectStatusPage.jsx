@@ -1,10 +1,12 @@
-import React from 'react'
-import ProjectStatus from '../components/MasterData/ProjectStatus/ProjectStatus'
+import React from 'react';
+import ProjectStatus from '../components/MasterData/ProjectStatus/ProjectStatus';
 
 const ProjectStatusPage = () => {
   return (
-    <div><ProjectStatus/></div>
-  )
-}
+    <div>
+      <ProjectStatus />
+    </div>
+  );
+};
 
-export default ProjectStatusPage
+export default ProjectStatusPage;

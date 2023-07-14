@@ -1,30 +1,29 @@
-@import "../src/components/header/header.css";
-@import "../src/components/Sidebar/sidebar.css";
-@import "../src/components/Tab/tab.css";
-@import"../src/components/common/AddNewProject/AddNewProject.css";
-@import "../src/components/dashboard/dashboard.css";
-@import "../src/components/GeneralInformation/generalInformation.css";
-@import "../src/components/common/DashboardTitle/dashboardTitle";
-@import "../src/components/clientDetails/clientDetails.css";
-@import "../src/components/ProjectMangedBy/projectManaged.css";
-@import "../src/components/common/SaveAndContinue/SaveAndContinue.css";
-@import"../src/components/Meetings/Meetings.css";
-@import "../src/components/ProjectResource/ProjectResource.css";
-@import "../src/components/BillingInfo/BillingInfo.css";
-@import "../src/components/MonthlyBillableHours/MonthlyBillableHours.css";
-@import"../src/components/TechStack/TechStack.css";
-@import"../src/components/ChangeRequest/changeRequest.css";
-@import "../src/components/common/MasterData/MasterDataTitle/MasterDataTitle.css";
-@import "../src/components/common/MasterData/Heading/Heading.css";
-@import "../src/components/common/MasterData/CancelAndSave/CancelAndSave.css";
-@import"../src/components/common/Pagination/pagination.css";
-@import "../src/components/common/Datatable/loading.css";
+@import '../src/components/header/header.css';
+@import '../src/components/Sidebar/sidebar.css';
+@import '../src/components/Tab/tab.css';
+@import '../src/components/common/AddNewProject/AddNewProject.css';
+@import '../src/components/dashboard/dashboard.css';
+@import '../src/components/GeneralInformation/generalInformation.css';
+@import '../src/components/common/DashboardTitle/dashboardTitle';
+@import '../src/components/clientDetails/clientDetails.css';
+@import '../src/components/ProjectMangedBy/projectManaged.css';
+@import '../src/components/common/SaveAndContinue/SaveAndContinue.css';
+@import '../src/components/Meetings/Meetings.css';
+@import '../src/components/ProjectResource/ProjectResource.css';
+@import '../src/components/BillingInfo/BillingInfo.css';
+@import '../src/components/MonthlyBillableHours/MonthlyBillableHours.css';
+@import '../src/components/TechStack/TechStack.css';
+@import '../src/components/ChangeRequest/changeRequest.css';
+@import '../src/components/common/MasterData/MasterDataTitle/MasterDataTitle.css';
+@import '../src/components/common/MasterData/Heading/Heading.css';
+@import '../src/components/common/MasterData/CancelAndSave/CancelAndSave.css';
+@import '../src/components/common/Pagination/pagination.css';
+@import '../src/components/common/Datatable/loading.css';
 
-html,body{
+html,
+body {
   font-family: Arial, Helvetica, sans-serif;
-
 }
-
 
 .sticky {
   position: -webkit-sticky;
@@ -32,61 +31,52 @@ html,body{
   top: 0;
   bottom: 0;
   align-self: flex-start;
-
 }
 
-.button-cancel{
+.button-cancel {
   background-color: #ffff;
-  border: 1px solid #BCBCBC;
+  border: 1px solid #bcbcbc;
   padding-left: 2rem;
   padding-right: 2rem;
- 
 }
 
-.guru{
+.guru {
   border: solid 1px;
 }
 
-
-.master-head{
-  background-color: #F0FBFE!important;
-  color: #0086AF !important;
+.master-head {
+  background-color: #f0fbfe !important;
+  color: #0086af !important;
   font-weight: 300 !important;
 }
-
 
 table {
   border: solid 1px;
 }
 
-
-select{
-  border-color:  #9B9797;
+select {
+  border-color: #9b9797;
   width: 119px;
   height: 23px;
-  
 }
 
-.upload-image{
-  border: 1px solid #9B9797;
+.upload-image {
+  border: 1px solid #9b9797;
   width: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.btn-primary{
-  background-color: #00C2F0 !important;
+.btn-primary {
+  background-color: #00c2f0 !important;
   border: none !important;
   padding-left: 2.5rem !important;
   padding-right: 2.5rem !important;
 }
 
-
-
 * {
   margin: 0px;
- 
 }
 
 .LoginPageContainer {
@@ -230,20 +220,19 @@ select{
   background-color: #4520ff;
 }
 
-
 @media only screen and (max-width: 1200px) {
   .LoginPageInnerContainer .ImageContianer {
-      width: 50%;
+    width: 50%;
   }
 }
 
 @media only screen and (max-width: 800px) {
   .LoginPageInnerContainer .ImageContianer {
-      display: none;
+    display: none;
   }
 
   .LoginFormContainer {
-      justify-content: center;
+    justify-content: center;
   }
 }
 .LoginPageContainer::-webkit-scrollbar {
@@ -261,5 +250,3 @@ select{
 .LoginPageContainer::-webkit-scrollbar-thumb:hover {
   background: #4520ff;
 }
-
-

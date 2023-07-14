@@ -1,10 +1,10 @@
-import React from "react";
-import dashboard from "../../assests/dashboard.svg";
-import Accordion from "./Accordion";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import dashboard from '../../assests/dashboard.svg';
+import Accordion from './Accordion';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
       <div className="sidebar sticky">
@@ -13,7 +13,9 @@ const Sidebar = () => {
             <div>
               <img src={dashboard} alt="dashboard" />
             </div>
-            <div style={{ fontSize: "16px" }} onClick={()=>navigate("/searchPage")}>Dashboard</div>
+            <div style={{ fontSize: '16px' }} onClick={() => navigate('/searchPage')}>
+              Dashboard
+            </div>
           </div>
         </div>
 
@@ -22,10 +24,7 @@ const Sidebar = () => {
             <div>
               <img src={dashboard} alt="dashboard" />
             </div>
-            <Accordion
-              projectManagementHeading={"Project Management"}
-              masterDataHeading={"Master Data"}
-            />
+            <Accordion projectManagementHeading={'Project Management'} masterDataHeading={'Master Data'} />
           </div>
         </div>
         <div>
@@ -33,7 +32,7 @@ const Sidebar = () => {
             <div>
               <img src={dashboard} alt="dashboard" />
             </div>
-            <div style={{ fontSize: "16px" }}>All projects</div>
+            <div style={{ fontSize: '16px' }}>All projects</div>
           </div>
         </div>
       </div>

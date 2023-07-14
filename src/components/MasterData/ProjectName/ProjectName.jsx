@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from "react";
-import Heading from "../../common/MasterData/Heading/Heading";
-import DataTable from "../../common/Datatable";
-import { Row, Col, Alert } from "react-bootstrap";
-import {
-  GET_PROJECT_NAME,
-  ADD_PROJECT_NAME,
-  DELETE_PROJECT_NAME,
-} from "../../../api/APIEndpoints";
-import edit from "../../../assests/edit.svg";
-import deleteIcon from "../../../assests/deleteNew.svg";
-import Pagination from "../../../components/common/Pagination/index";
+import React, { useEffect, useState } from 'react';
+import Heading from '../../common/MasterData/Heading/Heading';
+import DataTable from '../../common/Datatable';
+import { Row, Col, Alert } from 'react-bootstrap';
+import { GET_PROJECT_NAME, ADD_PROJECT_NAME, DELETE_PROJECT_NAME } from '../../../api/APIEndpoints';
+import edit from '../../../assests/edit.svg';
+import deleteIcon from '../../../assests/deleteNew.svg';
+import Pagination from '../../../components/common/Pagination/index';
 
 const ProjectName = () => {
   const [tableInfo, setTableInfo] = useState([]);
-  const [projectStatus, setProjectStatus] = useState("");
+  const [projectStatus, setProjectStatus] = useState('');
   const [isEdit, setIsEdit] = useState(false);
   const [id, setId] = useState(0);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [pageSize, setpageSize] = useState(2);
   const [pageIndex, setpageIndex] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
-  
 
   const editTable = (name, id) => {
     setProjectStatus(name);
@@ -32,11 +27,11 @@ const ProjectName = () => {
   const validate = () => {
     let err = false;
     if (projectStatus.length < 1) {
-      setError("*Project name is required");
+      setError('*Project name is required');
       err = true;
     }
-    if (!projectStatus.match("^[a-zA-Z ]*$")) {
-      setError("*Only text is allowed");
+    if (!projectStatus.match('^[a-zA-Z ]*$')) {
+      setError('*Only text is allowed');
       err = true;
     }
 
@@ -47,21 +42,21 @@ const ProjectName = () => {
     if (!validate()) {
       const body = {
         languageId: 1,
-        publicKey: "key@123",
+        publicKey: 'key@123',
         name: projectStatus,
         userId: 1,
       };
       const bodyEdit = {
         languageId: 1,
         id: id,
-        publicKey: "key@123",
+        publicKey: 'key@123',
         name: projectStatus,
         userId: 1,
       };
       if (!isEdit) {
         setLoading(true);
         await ADD_PROJECT_NAME(body).then((res) => {
-          setError("");
+          setError('');
         });
         await GET_PROJECT_NAME(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
@@ -71,7 +66,7 @@ const ProjectName = () => {
       } else {
         setLoading(true);
         await ADD_PROJECT_NAME(bodyEdit).then((res) => {
-          setError("");
+          setError('');
         });
         await GET_PROJECT_NAME(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
@@ -80,7 +75,7 @@ const ProjectName = () => {
         });
       }
       setIsEdit(false);
-      setProjectStatus("");
+      setProjectStatus('');
     }
   };
   const [pagination, setPagination] = useState({
@@ -102,14 +97,7 @@ const ProjectName = () => {
 
   const buildData = () => {
     const tableData = {
-      labels: [
-        "Project Name",
-        "Created By",
-        "Creation Date",
-        "Updated By",
-        "Updation Date",
-        "Action",
-      ],
+      labels: ['Project Name', 'Created By', 'Creation Date', 'Updated By', 'Updation Date', 'Action'],
       results: tableInfo?.map((result, index) => ({
         key: result.id,
         colData: {
@@ -155,28 +143,28 @@ const ProjectName = () => {
       })
       .catch((err) => {
         if (err) {
-          <Alert variant={"danger"}>Somethig went wrong</Alert>;
+          <Alert variant={'danger'}>Somethig went wrong</Alert>;
         }
       });
   }, [pageIndex]);
 
   const cancel = () => {
-    setProjectStatus("");
-    setError("");
+    setProjectStatus('');
+    setError('');
     setIsEdit(false);
   };
 
-  useEffect(()=>{
-    setTotalPage(totalPage)
- console.log(totalPage)
-  },[totalPage])
+  useEffect(() => {
+    setTotalPage(totalPage);
+    console.log(totalPage);
+  }, [totalPage]);
 
   return (
     <div className="container">
       <Heading
-        title={"Project Name"}
-        addTitle={"Add New Project"}
-        name={"Project Name"}
+        title={'Project Name'}
+        addTitle={'Add New Project'}
+        name={'Project Name'}
         inputValue={projectStatus}
         setInputValue={setProjectStatus}
         submit={addData}
@@ -186,7 +174,7 @@ const ProjectName = () => {
       />
       <Row className="mt-4">
         <Col>
-          <div style={{ marginLeft: ".72rem", marginRight: ".72rem" }}>
+          <div style={{ marginLeft: '.72rem', marginRight: '.72rem' }}>
             <DataTable
               tableData={buildData()}
               updatePageNum={updatePageNum}
@@ -198,13 +186,9 @@ const ProjectName = () => {
           </div>
           <div>
             {totalPage > 0 && pageSize > 0 ? (
-              <Pagination
-                totalItems={totalPage}
-                itemsPerPage={pageSize}
-                setpageIndex={setpageIndex}
-              />
+              <Pagination totalItems={totalPage} itemsPerPage={pageSize} setpageIndex={setpageIndex} />
             ) : (
-              ""
+              ''
             )}
           </div>
         </Col>

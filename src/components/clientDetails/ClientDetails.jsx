@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import { Row, Col } from "react-bootstrap";
-import DashboardTitle from "../common/DashboardTitle/DashboardTitle";
-import Input from "../common/Input/Input";
-import SaveAndContinue from "../common/SaveAndContinue/SaveAndContinue";
+import { Row, Col } from 'react-bootstrap';
+import DashboardTitle from '../common/DashboardTitle/DashboardTitle';
+import Input from '../common/Input/Input';
+import SaveAndContinue from '../common/SaveAndContinue/SaveAndContinue';
 
 const ClientDetails = () => {
   return (
     <div>
-      <DashboardTitle title={"Client Details"} />
+      <DashboardTitle title={'Client Details'} />
       <div className="container mt-3">
         <Row>
           <Col lg={2} className="client-col">
@@ -16,7 +16,7 @@ const ClientDetails = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"text"} className={"client-input"} />
+            <Input type={'text'} className={'client-input'} />
           </Col>
 
           <Col lg={2} className="client-col">
@@ -24,7 +24,7 @@ const ClientDetails = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"text"} className={"client-input"} />
+            <Input type={'text'} className={'client-input'} />
           </Col>
         </Row>
 
@@ -34,7 +34,7 @@ const ClientDetails = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"text"} className={"client-input"} />
+            <Input type={'text'} className={'client-input'} />
           </Col>
 
           <Col lg={2} className="client-col">
@@ -42,7 +42,7 @@ const ClientDetails = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"email"} className={"client-input"} />
+            <Input type={'email'} className={'client-input'} />
           </Col>
         </Row>
 
@@ -52,7 +52,7 @@ const ClientDetails = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"text"} className={"client-input"} />
+            <Input type={'text'} className={'client-input'} />
           </Col>
         </Row>
 
@@ -64,7 +64,7 @@ const ClientDetails = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"text"} className={"client-input"} />
+            <Input type={'text'} className={'client-input'} />
           </Col>
 
           <Col lg={2} className="client-col">
@@ -72,7 +72,7 @@ const ClientDetails = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"email"} className={"client-input"} />
+            <Input type={'email'} className={'client-input'} />
           </Col>
         </Row>
 
@@ -82,7 +82,7 @@ const ClientDetails = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={"text"} className={"client-input"} />
+            <Input type={'text'} className={'client-input'} />
           </Col>
         </Row>
 

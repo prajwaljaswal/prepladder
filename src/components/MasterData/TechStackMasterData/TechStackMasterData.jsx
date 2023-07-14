@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
-import TechStackHeader from "../../common/MasterData/TechStackHeader/index";
-import DataTable from "../../common/Datatable";
-import { Row, Col, Alert } from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import TechStackHeader from '../../common/MasterData/TechStackHeader/index';
+import DataTable from '../../common/Datatable';
+import { Row, Col, Alert } from 'react-bootstrap';
 import {
   GET_TECH_STACK,
   ADD_TECH_STACK,
   DELETE_TECH_STACK,
   GET_TECH_DEPARTMENT,
   GET_TECH_STACK_BY_ID,
-} from "../../../api/APIEndpoints";
-import edit from "../../../assests/edit.svg";
-import deleteIcon from "../../../assests/deleteNew.svg";
-import Pagination from "../../../components/common/Pagination/index";
+} from '../../../api/APIEndpoints';
+import edit from '../../../assests/edit.svg';
+import deleteIcon from '../../../assests/deleteNew.svg';
+import Pagination from '../../../components/common/Pagination/index';
 
 const TechStackMasterData = () => {
   const [tableInfo, setTableInfo] = useState([]);
-  const [projectStatus, setProjectStatus] = useState("");
+  const [projectStatus, setProjectStatus] = useState('');
   const [isEdit, setIsEdit] = useState(false);
   const [id, setId] = useState(0);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [pageSize, setpageSize] = useState(2);
   const [pageIndex, setpageIndex] = useState(1);
@@ -51,11 +51,11 @@ const TechStackMasterData = () => {
   const validate = () => {
     let err = false;
     if (projectStatus.length < 1) {
-      setError("*Tech Stack is required");
+      setError('*Tech Stack is required');
       err = true;
     }
-    if (!projectStatus.match("^[a-zA-Z ]*$")) {
-      setError("*Only text is allowed");
+    if (!projectStatus.match('^[a-zA-Z ]*$')) {
+      setError('*Only text is allowed');
       err = true;
     }
 
@@ -66,7 +66,7 @@ const TechStackMasterData = () => {
     if (!validate()) {
       const body = {
         languageId: 1,
-        publicKey: "key@123",
+        publicKey: 'key@123',
         name: projectStatus,
         departmentId: Number(selectedValue),
         userId: 1,
@@ -74,7 +74,7 @@ const TechStackMasterData = () => {
       const bodyEdit = {
         languageId: 1,
         id: id,
-        publicKey: "key@123",
+        publicKey: 'key@123',
         name: projectStatus,
         departmentId: Number(selectedValue),
         userId: 1,
@@ -82,7 +82,7 @@ const TechStackMasterData = () => {
       if (!isEdit) {
         setLoading(true);
         await ADD_TECH_STACK(body).then((res) => {
-          setError("");
+          setError('');
         });
         await GET_TECH_STACK(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
@@ -92,7 +92,7 @@ const TechStackMasterData = () => {
       } else {
         setLoading(true);
         await ADD_TECH_STACK(bodyEdit).then((res) => {
-          setError("");
+          setError('');
         });
         await GET_TECH_STACK(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
@@ -101,7 +101,7 @@ const TechStackMasterData = () => {
         });
       }
       setIsEdit(false);
-      setProjectStatus("");
+      setProjectStatus('');
     }
   };
   const [pagination, setPagination] = useState({
@@ -123,15 +123,7 @@ const TechStackMasterData = () => {
 
   const buildData = () => {
     const tableData = {
-      labels: [
-        "Tech Department",
-        "Tech Stack",
-        "Created By",
-        "Creation Date",
-        "Updated By",
-        "Updation Date",
-        "Action",
-      ],
+      labels: ['Tech Department', 'Tech Stack', 'Created By', 'Creation Date', 'Updated By', 'Updation Date', 'Action'],
       results: tableInfo?.map((result, index) => ({
         key: result.id,
         colData: {
@@ -183,14 +175,14 @@ const TechStackMasterData = () => {
       })
       .catch((err) => {
         if (err) {
-          <Alert variant={"danger"}>Somethig went wrong</Alert>;
+          <Alert variant={'danger'}>Somethig went wrong</Alert>;
         }
       });
   }, [pageIndex]);
 
   const cancel = () => {
-    setProjectStatus("");
-    setError("");
+    setProjectStatus('');
+    setError('');
     setIsEdit(false);
   };
 
@@ -202,9 +194,9 @@ const TechStackMasterData = () => {
   return (
     <div className="container">
       <TechStackHeader
-        title={"Tech Department"}
-        addTitle={"Add New Tech Deaprtment"}
-        name={"Tech Stack"}
+        title={'Tech Department'}
+        addTitle={'Add New Tech Deaprtment'}
+        name={'Tech Stack'}
         inputValue={projectStatus}
         setInputValue={setProjectStatus}
         submit={addData}
@@ -217,7 +209,7 @@ const TechStackMasterData = () => {
       />
       <Row className="mt-4">
         <Col>
-          <div style={{ marginLeft: ".72rem", marginRight: ".72rem" }}>
+          <div style={{ marginLeft: '.72rem', marginRight: '.72rem' }}>
             <DataTable
               tableData={buildData()}
               updatePageNum={updatePageNum}
@@ -229,13 +221,9 @@ const TechStackMasterData = () => {
           </div>
           <div>
             {totalPage > 0 && pageSize > 0 ? (
-              <Pagination
-                totalItems={totalPage}
-                itemsPerPage={pageSize}
-                setpageIndex={setpageIndex}
-              />
+              <Pagination totalItems={totalPage} itemsPerPage={pageSize} setpageIndex={setpageIndex} />
             ) : (
-              ""
+              ''
             )}
           </div>
         </Col>

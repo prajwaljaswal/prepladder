@@ -1,11 +1,12 @@
-import React from 'react'
-import TechStack from '../components/TechStack/TechStack'
-
+import React from 'react';
+import TechStack from '../components/TechStack/TechStack';
 
 const TechStackPage = () => {
   return (
-    <div><TechStack/></div>
-  )
-}
+    <div>
+      <TechStack />
+    </div>
+  );
+};
 
-export default TechStackPage
+export default TechStackPage;

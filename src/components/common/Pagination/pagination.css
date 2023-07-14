@@ -1,19 +1,15 @@
-.pagination-hover{
-    cursor: pointer;
+.pagination-hover {
+  cursor: pointer;
 }
-.current-page{
-    
-background-color: black;
-color: white;
-border-radius: 100%;   
-width:25px;
-display: flex;
-justify-content: center;   
+.current-page {
+  background-color: black;
+  color: white;
+  border-radius: 100%;
+  width: 25px;
+  display: flex;
+  justify-content: center;
 }
-.pageClassName{
-    display: flex;
-    margin-left: 15px !important;
-
+.pageClassName {
+  display: flex;
+  margin-left: 15px !important;
 }
-
-

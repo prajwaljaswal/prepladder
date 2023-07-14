@@ -1,10 +1,12 @@
-import React from 'react'
-import ProjectName from '../components/MasterData/ProjectName/ProjectName'
+import React from 'react';
+import ProjectName from '../components/MasterData/ProjectName/ProjectName';
 
 const ProjectNamePage = () => {
   return (
-    <div><ProjectName/></div>
-  )
-}
+    <div>
+      <ProjectName />
+    </div>
+  );
+};
 
-export default ProjectNamePage
+export default ProjectNamePage;

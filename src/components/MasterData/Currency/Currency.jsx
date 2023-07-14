@@ -1,31 +1,25 @@
-import React, { useEffect, useState } from "react";
-import CurrencyHeader from "../../common/MasterData/CurrencyHeader/CurrencyHeader";
-import DataTable from "../../common/Datatable";
-import { Row, Col, Alert } from "react-bootstrap";
-import {
-  GET_CURRENCY,
-  ADD_CURRENCY,
-  DELETE_CURRENCY,
-} from "../../../api/APIEndpoints";
-import edit from "../../../assests/edit.svg";
-import deleteIcon from "../../../assests/deleteNew.svg";
-import Pagination from "../../../components/common/Pagination/index";
+import React, { useEffect, useState } from 'react';
+import CurrencyHeader from '../../common/MasterData/CurrencyHeader/CurrencyHeader';
+import DataTable from '../../common/Datatable';
+import { Row, Col, Alert } from 'react-bootstrap';
+import { GET_CURRENCY, ADD_CURRENCY, DELETE_CURRENCY } from '../../../api/APIEndpoints';
+import edit from '../../../assests/edit.svg';
+import deleteIcon from '../../../assests/deleteNew.svg';
+import Pagination from '../../../components/common/Pagination/index';
 
 const Currency = () => {
   const [tableInfo, setTableInfo] = useState([]);
-  const [projectStatus, setProjectStatus] = useState("");
+  const [projectStatus, setProjectStatus] = useState('');
   const [isEdit, setIsEdit] = useState(false);
   const [id, setId] = useState(0);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [pageSize, setpageSize] = useState(2);
   const [pageIndex, setpageIndex] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
-  const [image, setImage] = useState("");
-  const [imageError,setImageError]  = useState("");
-  const [fileToShowCurrency, setFileToShowCurrency] = useState("");
-
-
+  const [image, setImage] = useState('');
+  const [imageError, setImageError] = useState('');
+  const [fileToShowCurrency, setFileToShowCurrency] = useState('');
 
   const editTable = (name, id, imageUrl) => {
     setProjectStatus(name);
@@ -38,16 +32,16 @@ const Currency = () => {
   const validate = () => {
     let err = false;
     if (projectStatus.length < 1) {
-      setError("*Currency is required");
+      setError('*Currency is required');
       err = true;
     }
 
-    if(image.length<1){
-      setImageError("*Image is required");
+    if (image.length < 1) {
+      setImageError('*Image is required');
       err = true;
     }
-    if (!projectStatus.match("^[a-zA-Z ]*$")) {
-      setError("*Only text is allowed");
+    if (!projectStatus.match('^[a-zA-Z ]*$')) {
+      setError('*Only text is allowed');
       err = true;
     }
 
@@ -57,24 +51,24 @@ const Currency = () => {
   const addData = async () => {
     if (!validate()) {
       const formData = new FormData();
-      formData.append("languageId", 1);
-      formData.append("Name", projectStatus);
-      formData.append("CurrencyIcon", "image");
-      if (typeof image !== "string") {
-        formData.append("AttachFiles", image);
+      formData.append('languageId', 1);
+      formData.append('Name', projectStatus);
+      formData.append('CurrencyIcon', 'image');
+      if (typeof image !== 'string') {
+        formData.append('AttachFiles', image);
       }
 
-      formData.append("publicKey", "key@123");
-      formData.append("userId", 1);
+      formData.append('publicKey', 'key@123');
+      formData.append('userId', 1);
       if (isEdit) {
-        formData.append("id", id);
+        formData.append('id', id);
       }
 
       if (!isEdit) {
         setLoading(true);
         await ADD_CURRENCY(formData).then((res) => {
-          setError("");
-          setImageError("");
+          setError('');
+          setImageError('');
         });
         await GET_CURRENCY(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
@@ -84,9 +78,9 @@ const Currency = () => {
       } else {
         setLoading(true);
         await ADD_CURRENCY(formData).then((res) => {
-          setError("");
-          setImage("");
-          setImageError("");
+          setError('');
+          setImage('');
+          setImageError('');
         });
         await GET_CURRENCY(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
@@ -95,7 +89,7 @@ const Currency = () => {
         });
       }
       setIsEdit(false);
-      setProjectStatus("");
+      setProjectStatus('');
     }
   };
   const [pagination, setPagination] = useState({
@@ -117,15 +111,7 @@ const Currency = () => {
 
   const buildData = () => {
     const tableData = {
-      labels: [
-        "Currency",
-        "Currency Icon",
-        "Created By",
-        "Creation Date",
-        "Updated By",
-        "Updation Date",
-        "Action",
-      ],
+      labels: ['Currency', 'Currency Icon', 'Created By', 'Creation Date', 'Updated By', 'Updation Date', 'Action'],
       results: tableInfo?.map((result, index) => ({
         key: result.id,
         colData: {
@@ -185,30 +171,30 @@ const Currency = () => {
       })
       .catch((err) => {
         if (err) {
-          <Alert variant={"danger"}>Somethig went wrong</Alert>;
+          <Alert variant={'danger'}>Somethig went wrong</Alert>;
         }
       });
   }, [pageIndex]);
 
   const cancel = () => {
-    setProjectStatus("");
-    setError("");
+    setProjectStatus('');
+    setError('');
     setIsEdit(false);
-    setFileToShowCurrency("");
-    setImageError("");
+    setFileToShowCurrency('');
+    setImageError('');
   };
 
-  useEffect(()=>{
-    setTotalPage(totalPage)
- console.log(totalPage)
-  },[totalPage])
+  useEffect(() => {
+    setTotalPage(totalPage);
+    console.log(totalPage);
+  }, [totalPage]);
 
   return (
     <div className="container">
       <CurrencyHeader
-        title={"Currency"}
-        addTitle={"Add Currency"}
-        name={"Currency"}
+        title={'Currency'}
+        addTitle={'Add Currency'}
+        name={'Currency'}
         inputValue={projectStatus}
         setInputValue={setProjectStatus}
         submit={addData}
@@ -223,7 +209,7 @@ const Currency = () => {
       />
       <Row className="mt-4">
         <Col>
-          <div style={{ marginLeft: ".72rem", marginRight: ".72rem" }}>
+          <div style={{ marginLeft: '.72rem', marginRight: '.72rem' }}>
             <DataTable
               tableData={buildData()}
               updatePageNum={updatePageNum}
@@ -235,13 +221,9 @@ const Currency = () => {
           </div>
           <div>
             {totalPage > 0 && pageSize > 0 ? (
-              <Pagination
-                totalItems={totalPage}
-                itemsPerPage={pageSize}
-                setpageIndex={setpageIndex}
-              />
+              <Pagination totalItems={totalPage} itemsPerPage={pageSize} setpageIndex={setpageIndex} />
             ) : (
-              ""
+              ''
             )}
           </div>
         </Col>

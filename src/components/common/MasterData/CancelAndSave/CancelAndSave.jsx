@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const CancelAndSave = ({ submit, cancel, edit, clearFile }) => {
   return (
@@ -15,7 +15,7 @@ const CancelAndSave = ({ submit, cancel, edit, clearFile }) => {
           }
         }}
       >
-        {edit ? "Edit" : "Save"}
+        {edit ? 'Edit' : 'Save'}
       </button>
     </div>
   );

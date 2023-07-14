@@ -1,17 +1,14 @@
+.outlet-container {
+  display: flex;
+}
 
-.outlet-container{
-    display: flex;
-  }
-  
-  .outlet-flex{
-    flex: 1;
-    margin-left: 15px;
-  }
-  
-  
-  
-  @media screen and (max-width: 900px) {
-    .outlet-sidebar{
+.outlet-flex {
+  flex: 1;
+  margin-left: 15px;
+}
+
+@media screen and (max-width: 900px) {
+  .outlet-sidebar {
     display: none;
-    }
   }
+}

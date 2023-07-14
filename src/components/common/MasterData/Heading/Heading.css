@@ -1,14 +1,13 @@
-.master-head-container{
-   border: solid 1px #ECECEC;
-   
+.master-head-container {
+  border: solid 1px #ececec;
 }
-.master-name{
-    color: #0084B8;
-    font-size: 16px;
-    padding-top: 10px;
-    padding-left: 10px;
+.master-name {
+  color: #0084b8;
+  font-size: 16px;
+  padding-top: 10px;
+  padding-left: 10px;
 }
-.master-col{
-    margin-left: 2rem;
-    margin-top: 1rem;
+.master-col {
+  margin-left: 2rem;
+  margin-top: 1rem;
 }

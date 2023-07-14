@@ -1,11 +1,12 @@
-import React from 'react'
-import TechDepartment from '../components/MasterData/TechDepartment/TechDepartment'
-
+import React from 'react';
+import TechDepartment from '../components/MasterData/TechDepartment/TechDepartment';
 
 const TechDepartmentPage = () => {
   return (
-    <div><TechDepartment/></div>
-  )
-}
+    <div>
+      <TechDepartment />
+    </div>
+  );
+};
 
-export default TechDepartmentPage
+export default TechDepartmentPage;

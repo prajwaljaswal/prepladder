@@ -1,10 +1,10 @@
-import React from 'react'
-import {Table} from "react-bootstrap"
+import React from 'react';
+import { Table } from 'react-bootstrap';
 
 const AttachmentTable = () => {
   return (
-    <div className='mt-4'>
-     <Table responsive className='table-bordered table-responsive text-center'>
+    <div className="mt-4">
+      <Table responsive className="table-bordered table-responsive text-center">
         <thead>
           <tr>
             <th>S.No</th>
@@ -13,7 +13,6 @@ const AttachmentTable = () => {
             <th>Date Created</th>
             <th>Size</th>
             <th>Delete</th>
-           
           </tr>
         </thead>
         <tbody>
@@ -24,7 +23,6 @@ const AttachmentTable = () => {
             <td>02/01/2023</td>
             <td>200KB</td>
             <td>Table cell</td>
-            
           </tr>
           <tr>
             <td>2</td>
@@ -33,7 +31,6 @@ const AttachmentTable = () => {
             <td>Table cell</td>
             <td>Table cell</td>
             <td>Table cell</td>
-           
           </tr>
           <tr>
             <td>3</td>
@@ -42,14 +39,11 @@ const AttachmentTable = () => {
             <td>Table cell</td>
             <td>Table cell</td>
             <td>Table cell</td>
-           
           </tr>
         </tbody>
       </Table>
-    
-    
     </div>
-  )
-}
+  );
+};
 
-export default AttachmentTable
+export default AttachmentTable;

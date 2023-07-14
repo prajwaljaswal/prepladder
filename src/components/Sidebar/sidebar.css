@@ -1,42 +1,37 @@
-
-.sidebar{
-    width: 16rem;
-    height: calc(100vh);
-    background-color: #0084A3;  
-    
-    
+.sidebar {
+  width: 16rem;
+  height: calc(100vh);
+  background-color: #0084a3;
 }
-.sidebar-element{
-    padding-left: 1rem;
-    padding-right: 1rem;
-    display: flex;
-    gap: 1rem;
-    color: white;
-    font-size: 14px;
-    padding-top: 1rem;
-    font-weight: 600;
-
-
+.sidebar-element {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  gap: 1rem;
+  color: white;
+  font-size: 14px;
+  padding-top: 1rem;
+  font-weight: 600;
 }
-.drawer-background{
-    background-color: #0084A3 !important;    
+.drawer-background {
+  background-color: #0084a3 !important;
 }
-.menu-button{
-    margin-left: 1rem;
-    margin-top: 1rem;
+.menu-button {
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
 
 @media screen and (min-width: 900px) {
-    .menu-button {
-      display: none;
-    }
+  .menu-button {
+    display: none;
   }
+}
 
-  @media screen and (max-width: 900px) {
-    .sidebar {
-      display: none;
-    }
+@media screen and (max-width: 900px) {
+  .sidebar {
+    display: none;
   }
+}
 /* 
   .accordion-button{
   border: none !important;
@@ -63,12 +58,12 @@
     
   } */
 
-  .master-data-list div{
-    padding-top: 7px;
-    font-size: 16px;
-    font-weight: 200;
-  }
+.master-data-list div {
+  padding-top: 7px;
+  font-size: 16px;
+  font-weight: 200;
+}
 
-  .master-data-list div:hover{
-    cursor: pointer;
-  }
+.master-data-list div:hover {
+  cursor: pointer;
+}

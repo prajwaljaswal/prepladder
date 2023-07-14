@@ -9,11 +9,9 @@
     "antd": "^5.6.3",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
-    "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
-    "exact": "^0.8.0",
+    "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
-    "mrm": "2",
     "postcss-import": "^15.1.0",
     "prettier": "^3.0.0",
     "react": "^18.2.0",
@@ -36,25 +34,7 @@
     "eject": "react-scripts eject",
     "build:css": "postcss src/index.css -o dist/style.css",
     "watch:css": "postcss src/index.css -o dist/style.css -w",
-    "eslint": "eslint --ignore-path .gitignore",
-    "lint-all": "yarn eslint .",
-    "lint-fix": "yarn eslint --fix",
-    "lint-fix-all": "yarn lint-fix .",
-    "format": "yarn prettier --write .",
-    "format-all": "yarn prettier-all --write .",
-    "check-format-all": "yarn prettier-all --list-different",
-    "prepare": "husky install",
-    "pre-commit": "yarn prettier --write . && lint-staged"
-  },
-  "lint-staged": {
-    "*.js": "eslint --fix ",
-    "*.{js,css,md,html,json}": "prettier --cache --write"
-},
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -69,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.0.1",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
@@ -77,8 +58,8 @@
     "postcss-cli": "^10.1.0",
     "precss": "^4.0.0"
   },
-  "main": "index.js",
-  "repository": "http://devops.tglserver.net/TMotions/PMS%20-%20Project%20Management%20System/_git/PMS%20-%20Frontend",
-  "author": "Prajwal Jaswal <prajwal.jaswal@tmotions.com>",
-  "license": "MIT"
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md,jsx}": "prettier --write"
+  }
 }

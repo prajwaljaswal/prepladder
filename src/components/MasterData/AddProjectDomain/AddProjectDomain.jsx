@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from "react";
-import Heading from "../../common/MasterData/Heading/Heading";
-import DataTable from "../../common/Datatable";
-import { Row, Col, Alert } from "react-bootstrap";
-import {
-  GET_PROJECT_DOMAIN,
-  ADD_PROJECT_DOMAIN,
-  DELETE_PROJECT_DOMAIN,
-} from "../../../api/APIEndpoints";
-import edit from "../../../assests/edit.svg";
-import deleteIcon from "../../../assests/deleteNew.svg";
-import Pagination from "../../../components/common/Pagination/index";
+import React, { useEffect, useState } from 'react';
+import Heading from '../../common/MasterData/Heading/Heading';
+import DataTable from '../../common/Datatable';
+import { Row, Col, Alert } from 'react-bootstrap';
+import { GET_PROJECT_DOMAIN, ADD_PROJECT_DOMAIN, DELETE_PROJECT_DOMAIN } from '../../../api/APIEndpoints';
+import edit from '../../../assests/edit.svg';
+import deleteIcon from '../../../assests/deleteNew.svg';
+import Pagination from '../../../components/common/Pagination/index';
 
 const AddProjectDomain = () => {
   const [tableInfo, setTableInfo] = useState([]);
-  const [projectStatus, setProjectStatus] = useState("");
+  const [projectStatus, setProjectStatus] = useState('');
   const [isEdit, setIsEdit] = useState(false);
   const [id, setId] = useState(0);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [pageSize, setpageSize] = useState(2);
   const [pageIndex, setpageIndex] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
-
 
   const editTable = (name, id) => {
     setProjectStatus(name);
@@ -32,11 +27,11 @@ const AddProjectDomain = () => {
   const validate = () => {
     let err = false;
     if (projectStatus.length < 1) {
-      setError("*Project domain is required");
+      setError('*Project domain is required');
       err = true;
     }
-    if (!projectStatus.match("^[a-zA-Z ]*$")) {
-      setError("*Only text is allowed");
+    if (!projectStatus.match('^[a-zA-Z ]*$')) {
+      setError('*Only text is allowed');
       err = true;
     }
 
@@ -47,46 +42,45 @@ const AddProjectDomain = () => {
     if (!validate()) {
       const body = {
         languageId: 1,
-        publicKey: "key@123",
+        publicKey: 'key@123',
         name: projectStatus,
         userId: 1,
       };
       const bodyEdit = {
         languageId: 1,
         id: id,
-        publicKey: "key@123",
+        publicKey: 'key@123',
         name: projectStatus,
         userId: 1,
       };
       if (!isEdit) {
         setLoading(true);
         await ADD_PROJECT_DOMAIN(body).then((res) => {
-          setError("");
+          setError('');
         });
         await GET_PROJECT_DOMAIN(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
-          
+
           setTotalPage(res.data.data.totalItems);
-          
+
           setLoading(false);
-          
-          console.log(totalPage)
+
+          console.log(totalPage);
         });
-       
       } else {
         setLoading(true);
         await ADD_PROJECT_DOMAIN(bodyEdit).then((res) => {
-          setError("");
+          setError('');
         });
         await GET_PROJECT_DOMAIN(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
           setTotalPage(res?.data?.data?.totalItems);
-          console.log(res?.data?.data?.totalItems)
+          console.log(res?.data?.data?.totalItems);
           setLoading(false);
         });
       }
       setIsEdit(false);
-      setProjectStatus("");
+      setProjectStatus('');
     }
   };
   const [pagination, setPagination] = useState({
@@ -108,14 +102,7 @@ const AddProjectDomain = () => {
 
   const buildData = () => {
     const tableData = {
-      labels: [
-        "Project Domain",
-        "Created By",
-        "Creation Date",
-        "Updated By",
-        "Updation Date",
-        "Action",
-      ],
+      labels: ['Project Domain', 'Created By', 'Creation Date', 'Updated By', 'Updation Date', 'Action'],
       results: tableInfo?.map((result, index) => ({
         key: result.id,
         colData: {
@@ -161,28 +148,28 @@ const AddProjectDomain = () => {
       })
       .catch((err) => {
         if (err) {
-          <Alert variant={"danger"}>Somethig went wrong</Alert>;
+          <Alert variant={'danger'}>Somethig went wrong</Alert>;
         }
       });
   }, [pageIndex]);
 
   const cancel = () => {
-    setProjectStatus("");
-    setError("");
+    setProjectStatus('');
+    setError('');
     setIsEdit(false);
   };
 
-  useEffect(()=>{
-    setTotalPage(totalPage)
- console.log(totalPage)
-  },[totalPage])
+  useEffect(() => {
+    setTotalPage(totalPage);
+    console.log(totalPage);
+  }, [totalPage]);
 
   return (
     <div className="container">
       <Heading
-        title={"Project Domain"}
-        addTitle={"Add New Project Domain"}
-        name={"Project Domain"}
+        title={'Project Domain'}
+        addTitle={'Add New Project Domain'}
+        name={'Project Domain'}
         inputValue={projectStatus}
         setInputValue={setProjectStatus}
         submit={addData}
@@ -192,7 +179,7 @@ const AddProjectDomain = () => {
       />
       <Row className="mt-4">
         <Col>
-          <div style={{ marginLeft: ".72rem", marginRight: ".72rem" }}>
+          <div style={{ marginLeft: '.72rem', marginRight: '.72rem' }}>
             <DataTable
               tableData={buildData()}
               updatePageNum={updatePageNum}
@@ -203,15 +190,15 @@ const AddProjectDomain = () => {
             />
           </div>
           <div>
-            {totalPage > 0 && pageSize > 0  ?  (
+            {totalPage > 0 && pageSize > 0 ? (
               <Pagination
                 totalItems={totalPage}
                 itemsPerPage={pageSize}
                 setpageIndex={setpageIndex}
-                pageIndex = {pageIndex}
+                pageIndex={pageIndex}
               />
             ) : (
-              ""
+              ''
             )}
           </div>
         </Col>

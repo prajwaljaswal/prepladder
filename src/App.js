@@ -1,6 +1,6 @@
-import "./App.css";
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AppRouter from "./routes/AppRouter";
+import AppRouter from './routes/AppRouter';
 function App() {
   return (
     <div>

@@ -1,16 +1,15 @@
-.client-input{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-
+.client-input {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.client-col{
-    width: 8rem !important;
+.client-col {
+  width: 8rem !important;
 }
 
-.client-ruler{
-    border-top: 1px solid #000000;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+.client-ruler {
+  border-top: 1px solid #000000;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }

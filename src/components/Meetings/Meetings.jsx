@@ -1,13 +1,13 @@
-import React from "react";
-import DashboardTitle from "../common/DashboardTitle/DashboardTitle";
-import { Row, Col } from "react-bootstrap";
-import Input from "../common/Input/Input";
-import SaveAndContinue from "../common/SaveAndContinue/SaveAndContinue";
+import React from 'react';
+import DashboardTitle from '../common/DashboardTitle/DashboardTitle';
+import { Row, Col } from 'react-bootstrap';
+import Input from '../common/Input/Input';
+import SaveAndContinue from '../common/SaveAndContinue/SaveAndContinue';
 
 const Meetings = () => {
   return (
     <div>
-      <DashboardTitle title={"Meeting"} />
+      <DashboardTitle title={'Meeting'} />
       <div className="container mt-3">
         <Row className="mt-4">
           <Col lg={2} className="meeting-col">
@@ -15,7 +15,7 @@ const Meetings = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type="date" className={"meeting-input"} />
+            <Input type="date" className={'meeting-input'} />
           </Col>
 
           <Col lg={2} className="meeting-col">
@@ -23,7 +23,7 @@ const Meetings = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type="date" className={"meeting-input"} />
+            <Input type="date" className={'meeting-input'} />
           </Col>
         </Row>
 
@@ -33,7 +33,7 @@ const Meetings = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type="date" className={"meeting-input"} />
+            <Input type="date" className={'meeting-input'} />
           </Col>
 
           <Col lg={2} className="meeting-col">
@@ -41,31 +41,35 @@ const Meetings = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type="date" className={"meeting-input"} />
+            <Input type="date" className={'meeting-input'} />
           </Col>
         </Row>
 
         <Row className="mt-4">
           <Col lg={2} className="meeting-col">
-          <div className="d-flex gap-2">
-          <div>Actual UAT</div>
-          <div><Input type={"checkbox"}/></div>
-        </div>
+            <div className="d-flex gap-2">
+              <div>Actual UAT</div>
+              <div>
+                <Input type={'checkbox'} />
+              </div>
+            </div>
           </Col>
 
           <Col lg={4}>
-            <Input type="date" className={"meeting-input"} />
+            <Input type="date" className={'meeting-input'} />
           </Col>
 
           <Col lg={2} className="meeting-col">
-          <div className="d-flex gap-2">
-          <div>Actual Live</div>
-          <div><Input type={"checkbox"}/></div>
-        </div>
+            <div className="d-flex gap-2">
+              <div>Actual Live</div>
+              <div>
+                <Input type={'checkbox'} />
+              </div>
+            </div>
           </Col>
 
           <Col lg={4}>
-            <Input type="date" className={"meeting-input"} />
+            <Input type="date" className={'meeting-input'} />
           </Col>
         </Row>
 

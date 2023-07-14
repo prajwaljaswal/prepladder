@@ -13,6 +13,10 @@
   padding-top: 1rem;
   font-weight: 600;
 }
+
+.sidebar-element:hover {
+  cursor: pointer;
+}
 .drawer-background {
   background-color: #0084a3 !important;
 }
@@ -32,38 +36,35 @@
     display: none;
   }
 }
-/* 
-  .accordion-button{
-  border: none !important;
-  color: white !important;
-  padding: 0px !important;
-  background-color: #0084A3 !important;
-  border: none !important;
-  }
-  .accordion-body{
-    padding: 0px !important;
-    
-  }
-  .accordion-item{
-  border-radius: 0px !important;
-  border: none !important;
-  background-color: #0084A3 !important;
-  
-  }
-
-  .accordion-button{
-    border: none !important;
-    font-weight: 600 !important;
-    font-size: 16px !important;
-    
-  } */
 
 .master-data-list div {
   padding-top: 7px;
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 500;
 }
 
 .master-data-list div:hover {
+  cursor: pointer;
+}
+
+.master-data-heading {
+  padding-top: 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.master-data-heading:hover {
+  cursor: pointer;
+}
+
+.project-management-heading {
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.project-management-heading:hover {
   cursor: pointer;
 }

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { IoIosRadioButtonOff } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
+import { RiArrowDropDownLine, RiArrowDropUpLine } from 'react-icons/ri';
+
 const Accordion = ({ projectManagementHeading, masterDataHeading, masterDataFields }) => {
   const [projectManagement, setProjectManagement] = useState(false);
   const [masterData, setMasterData] = useState(false);
@@ -19,11 +21,17 @@ const Accordion = ({ projectManagementHeading, masterDataHeading, masterDataFiel
 
   return (
     <div>
-      <div onClick={projectManagementSetting} style={{ fontSize: '16px' }}>
-        {projectManagementHeading}
+      <div onClick={projectManagementSetting} className="project-management-heading">
+        <div>{projectManagementHeading}</div>
+        <div>{projectManagement ? <RiArrowDropDownLine size={'25px'} /> : <RiArrowDropUpLine size={'25px'} />}</div>
       </div>
-      <div onClick={masterDataSetting}>
-        <div className={`${projectManagement ? 'mt-3' : ''}`}>{projectManagement ? masterDataHeading : ''}</div>
+      <div onClick={masterDataSetting} className="d-flex">
+        <div className={`${projectManagement ? 'master-data-heading' : ''}`}>
+          {projectManagement ? masterDataHeading : ''}
+        </div>
+        <div className={!projectManagement ? 'd-none' : 'master-data-heading'}>
+          {masterData ? <RiArrowDropDownLine size={'25px'} /> : <RiArrowDropUpLine size={'25px'} />}
+        </div>
       </div>
       {masterData && projectManagement ? (
         <div className="master-data-list">

@@ -29,7 +29,7 @@ const DataTable = ({
                 {tableData.labels.map(
                   (col) =>
                     col !== null && (
-                      <th className="master-head" key={col}>
+                      <th id="master-head" key={col}>
                         {col}
                       </th>
                     ),
@@ -40,16 +40,9 @@ const DataTable = ({
               {tableData.results.map((result) => (
                 <tr className="table__row table__row--selectable" key={result.key}>
                   {Object.keys(result.colData).map((key, index) => {
-                    if (index === 0) {
-                      return (
-                        <th className="table__cell" key={key}>
-                          {result.colData[key]}
-                        </th>
-                      );
-                    }
                     return (
                       result.colData[key] !== null && (
-                        <td className="table__cell" key={key}>
+                        <td id="table__cell" key={key}>
                           {result.colData[key]}
                         </td>
                       )

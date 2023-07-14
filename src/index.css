@@ -45,10 +45,14 @@ body {
   border: solid 1px;
 }
 
-.master-head {
-  background-color: #f0fbfe !important;
-  color: #0086af !important;
-  font-weight: 300 !important;
+#master-head {
+  background-color: #f0fbfe;
+  color: #0086af;
+  font-weight: 600;
+  font-size: 17px;
+}
+#table__cell {
+  font-weight: 400 !important;
 }
 
 table {

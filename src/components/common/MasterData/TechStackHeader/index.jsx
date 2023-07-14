@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import MasterDataTitle from '../MasterDataTitle/MasterDataTitle';
+import MasterDataTitle from '../../../common/MasterData/MasterDataTitle';
 import { Row, Col } from 'react-bootstrap';
-import Input from '../../../../components/common/Input/Input';
-import CancelAndSave from '../CancelAndSave/CancelAndSave';
+import Input from '../../Input';
+import CancelAndSave from '../CancelAndSave';
 import Uploads from '../../../../assests/upload.svg';
 import { MdCancel } from 'react-icons/md';
-import ProjectStatus from '../../../MasterData/ProjectStatus/ProjectStatus';
-import Select from '../../../../../src/components/common/Select/Select';
+import ProjectStatus from '../../../Template/MasterData/ProjectStatus';
+import Select from '../../Select';
 
 const TechStackHeader = ({
   edit,

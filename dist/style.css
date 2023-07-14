@@ -85,27 +85,26 @@
 .master-data-list div:hover {
   cursor: pointer;
 }
-.r {
+.header-container {
+  background-color: #00c2f0;
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
+  padding-left: 20px;
   display: flex;
-  background-color: white;
-  border: 1px solid #e6e6e6;
-  margin-top: 2rem;
   justify-content: space-between;
 }
-.r div {
-  background-color: #caf1fa;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 5px;
-  padding-left: 5px;
-  border-right: 2px solid #e6e6e6;
-  border-left: 2px solid #e6e6e6;
+.header-icons {
+  display: flex;
+  grid-gap: 18px;
+  gap: 18px;
+  margin-right: 2.3rem;
 }
-@media screen and (max-width: 900px) {
-  .r {
-    min-width: 24rem;
-    overflow-y: scroll;
-  }
+.header-icons img {
+  height: 55%;
+  margin-top: 5px;
+}
+.header-icons img:hover {
+  cursor: pointer;
 }
 .new-project-container {
   display: flex;
@@ -289,18 +288,26 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.master-head-container {
-  border: solid 1px #ececec;
+.header-container {
+  background-color: #00c2f0;
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
 }
-.master-name {
-  color: #0084b8;
-  font-size: 16px;
-  padding-top: 10px;
-  padding-left: 10px;
+.header-icons {
+  display: flex;
+  grid-gap: 18px;
+  gap: 18px;
+  margin-right: 2.3rem;
 }
-.master-col {
-  margin-left: 2rem;
-  margin-top: 1rem;
+.header-icons img {
+  height: 55%;
+  margin-top: 5px;
+}
+.header-icons img:hover {
+  cursor: pointer;
 }
 .cancel-save {
   margin-right: 1rem;

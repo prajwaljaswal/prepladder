@@ -1,9 +1,9 @@
 import React from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
-import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import MobileSidebar from '../../components/Sidebar/MobileSideBar';
+import Header from '../../components/Template/header';
+import Footer from '../../components/Template/footer';
+import Sidebar from '../../components/Template/Sidebar';
+import MobileSidebar from '../../components/Template/Sidebar/MobileSideBar';
 
 const AuthLayout = () => {
   const auth = true;

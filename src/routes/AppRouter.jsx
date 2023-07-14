@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout/MainLayout';
 import AuthLayout from '../layout/authLayout/AuthLayout';
 import Dashboard from '../../src/pages/DashboardPage';
-import Notfound from '../components/common/Notfound';
+import Notfound from '../../src/components/common/NotFound';
 import Login from '../../src/pages/LoginPage';
-import SearchPage from '../pages/SearchPage';
+// import SearchPage from '../pages/SearchPage';
 import ProjectNamePage from '../../src/pages/ProjectNamePage';
 import ProjectStatus from '../../src/pages/ProjectStatusPage';
 import ProjectType from '../../src/pages/ProjectTypePage';
@@ -13,7 +13,7 @@ import Currency from '../../src/pages/CurrencyPage';
 import Email from '../../src/pages/AddEmailPage';
 import ProjectDomain from '../../src/pages/ProjectDomainPage';
 import TechDepartment from '../../src/pages/TechDepartmentPage';
-import TechStackMasterData from '../../src/components/MasterData/TechStackMasterData/TechStackMasterData';
+import TechStackMasterData from '../../src/components/Template/MasterData/TechStackMasterData';
 
 const AppRouter = () => {
   return (
@@ -24,7 +24,7 @@ const AppRouter = () => {
         </Route>
 
         <Route path="/searchPage" element={<AuthLayout />}>
-          <Route index element={<SearchPage />} />
+          <Route index element={<Dashboard />} />
           <Route path="/searchPage/dashboard" element={<Dashboard />} />
           {/* <Route path = "/searchPage/masterData" element={<MasterDataDashboard />} /> */}
           <Route path="/searchPage/projectName" element={<ProjectNamePage />} />

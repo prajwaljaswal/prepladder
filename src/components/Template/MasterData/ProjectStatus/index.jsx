@@ -6,6 +6,7 @@ import { GET_PROJECT_STATUS, ADD_PROJECT_STATUS, DELETE_PROJECT_STATUS } from '.
 import edit from '../../../../assests/edit.svg';
 import deleteIcon from '../../../../assests/deleteNew.svg';
 import Pagination from '../../../common/Pagination';
+import { sweetAlertComponent } from '../../../../components/common/Alert';
 
 const ProjectStatus = () => {
   const [tableInfo, setTableInfo] = useState([]);
@@ -55,24 +56,45 @@ const ProjectStatus = () => {
       };
       if (!isEdit) {
         setLoading(true);
-        await ADD_PROJECT_STATUS(body).then((res) => {
-          setError('');
-        });
-        await GET_PROJECT_STATUS(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-        });
+        await ADD_PROJECT_STATUS(body)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Project Status Added');
+            if (res?.data?.statusCode == 204) {
+              sweetAlertComponent('error', 'Project Status already exsist');
+            }
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_PROJECT_STATUS(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
         setLoading(false);
       } else {
         setLoading(true);
-        await ADD_PROJECT_STATUS(bodyEdit).then((res) => {
-          setError('');
-        });
-        await GET_PROJECT_STATUS(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-          setLoading(false);
-        });
+        await ADD_PROJECT_STATUS(bodyEdit)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Project Status updated');
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_PROJECT_STATUS(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+            setLoading(false);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
       }
       setIsEdit(false);
       setProjectStatus('');
@@ -87,11 +109,21 @@ const ProjectStatus = () => {
 
   const deleteTrigger = async (id) => {
     setLoading(true);
-    await DELETE_PROJECT_STATUS(id).then((res) => {});
-    await GET_PROJECT_STATUS(pageIndex, pageSize).then((res) => {
-      setTableInfo(res?.data?.data?.results);
-      setTotalPage(res?.data?.data?.totalItems);
-    });
+    await DELETE_PROJECT_STATUS(id)
+      .then((res) => {
+        sweetAlertComponent('success', 'Project Status deleted');
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
+    await GET_PROJECT_STATUS(pageIndex, pageSize)
+      .then((res) => {
+        setTableInfo(res?.data?.data?.results);
+        setTotalPage(res?.data?.data?.totalItems);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
     setLoading(false);
   };
 
@@ -163,7 +195,7 @@ const ProjectStatus = () => {
     <div className="container">
       <Heading
         title={'Project Status'}
-        addTitle={'Add New Project Status'}
+        addTitle={'Add Project Status'}
         name={'Project Status'}
         inputValue={projectStatus}
         setInputValue={setProjectStatus}

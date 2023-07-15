@@ -6,6 +6,7 @@ import { Row, Col, Alert } from 'react-bootstrap';
 import edit from '../../../../assests/edit.svg';
 import deleteIcon from '../../../../assests/deleteNew.svg';
 import Pagination from '../../../common/Pagination';
+import { sweetAlertComponent } from '../../../../components/common/Alert';
 
 const AddProjectDomain = () => {
   const [tableInfo, setTableInfo] = useState([]);
@@ -57,27 +58,43 @@ const AddProjectDomain = () => {
         setLoading(true);
         await ADD_PROJECT_DOMAIN(body).then((res) => {
           setError('');
+          sweetAlertComponent('success', 'Project Domain Added');
+
+          if (res?.data?.statusCode == 204) {
+            sweetAlertComponent('error', 'Project Domain already exsist');
+          }
         });
-        await GET_PROJECT_DOMAIN(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
+        await GET_PROJECT_DOMAIN(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
 
-          setTotalPage(res.data.data.totalItems);
+            setTotalPage(res.data.data.totalItems);
 
-          setLoading(false);
-
-          console.log(totalPage);
-        });
+            setLoading(false);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
       } else {
         setLoading(true);
-        await ADD_PROJECT_DOMAIN(bodyEdit).then((res) => {
-          setError('');
-        });
-        await GET_PROJECT_DOMAIN(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-          console.log(res?.data?.data?.totalItems);
-          setLoading(false);
-        });
+        await ADD_PROJECT_DOMAIN(bodyEdit)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Project domain updated');
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_PROJECT_DOMAIN(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+            console.log(res?.data?.data?.totalItems);
+            setLoading(false);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
       }
       setIsEdit(false);
       setProjectStatus('');
@@ -92,11 +109,21 @@ const AddProjectDomain = () => {
 
   const deleteTrigger = async (id) => {
     setLoading(true);
-    await DELETE_PROJECT_DOMAIN(id).then((res) => {});
-    await GET_PROJECT_DOMAIN(pageIndex, pageSize).then((res) => {
-      setTableInfo(res?.data?.data?.results);
-      setTotalPage(res?.data?.data?.totalItems);
-    });
+    await DELETE_PROJECT_DOMAIN(id)
+      .then((res) => {
+        sweetAlertComponent('success', 'Project domain deleted');
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
+    await GET_PROJECT_DOMAIN(pageIndex, pageSize)
+      .then((res) => {
+        setTableInfo(res?.data?.data?.results);
+        setTotalPage(res?.data?.data?.totalItems);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
     setLoading(false);
   };
 
@@ -147,9 +174,7 @@ const AddProjectDomain = () => {
         setLoading(false);
       })
       .catch((err) => {
-        if (err) {
-          <Alert variant={'danger'}>Somethig went wrong</Alert>;
-        }
+        sweetAlertComponent('error', 'Something went wrong');
       });
   }, [pageIndex]);
 
@@ -161,14 +186,13 @@ const AddProjectDomain = () => {
 
   useEffect(() => {
     setTotalPage(totalPage);
-    console.log(totalPage);
   }, [totalPage]);
 
   return (
     <div className="container">
       <Heading
         title={'Project Domain'}
-        addTitle={'Add New Project Domain'}
+        addTitle={'Add Project Domain'}
         name={'Project Domain'}
         inputValue={projectStatus}
         setInputValue={setProjectStatus}

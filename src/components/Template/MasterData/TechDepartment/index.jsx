@@ -6,6 +6,7 @@ import { GET_TECH_DEPARTMENT, ADD_TECH_DEPARTMENT, DELETE_TECH_DEPARTMENT } from
 import edit from '../../../../assests/edit.svg';
 import deleteIcon from '../../../../assests/deleteNew.svg';
 import Pagination from '../../../common/Pagination';
+import { sweetAlertComponent } from '../../../../components/common/Alert';
 
 const TechDepartment = () => {
   const [tableInfo, setTableInfo] = useState([]);
@@ -56,24 +57,45 @@ const TechDepartment = () => {
       };
       if (!isEdit) {
         setLoading(true);
-        await ADD_TECH_DEPARTMENT(body).then((res) => {
-          setError('');
-        });
-        await GET_TECH_DEPARTMENT(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-        });
+        await ADD_TECH_DEPARTMENT(body)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Tech Department Added');
+            if (res?.data?.statusCode == 204) {
+              sweetAlertComponent('error', 'Tech Department already exsist');
+            }
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_TECH_DEPARTMENT(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
         setLoading(false);
       } else {
         setLoading(true);
-        await ADD_TECH_DEPARTMENT(bodyEdit).then((res) => {
-          setError('');
-        });
-        await GET_TECH_DEPARTMENT(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-          setLoading(false);
-        });
+        await ADD_TECH_DEPARTMENT(bodyEdit)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Tech department updated');
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_TECH_DEPARTMENT(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+            setLoading(false);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
       }
       setIsEdit(false);
       setProjectStatus('');
@@ -88,11 +110,21 @@ const TechDepartment = () => {
 
   const deleteTrigger = async (id) => {
     setLoading(true);
-    await DELETE_TECH_DEPARTMENT(id).then((res) => {});
-    await GET_TECH_DEPARTMENT(pageIndex, pageSize).then((res) => {
-      setTableInfo(res?.data?.data?.results);
-      setTotalPage(res?.data?.data?.totalItems);
-    });
+    await DELETE_TECH_DEPARTMENT(id)
+      .then((res) => {
+        sweetAlertComponent('success', 'Tech department deleted');
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
+    await GET_TECH_DEPARTMENT(pageIndex, pageSize)
+      .then((res) => {
+        setTableInfo(res?.data?.data?.results);
+        setTotalPage(res?.data?.data?.totalItems);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
     setLoading(false);
   };
 
@@ -143,9 +175,7 @@ const TechDepartment = () => {
         setLoading(false);
       })
       .catch((err) => {
-        if (err) {
-          <Alert variant={'danger'}>Somethig went wrong</Alert>;
-        }
+        sweetAlertComponent('error', 'Something went wrong');
       });
   }, [pageIndex]);
 
@@ -157,14 +187,13 @@ const TechDepartment = () => {
 
   useEffect(() => {
     setTotalPage(totalPage);
-    console.log(totalPage);
   }, [totalPage]);
 
   return (
     <div className="container">
       <Heading
         title={'Tech Department'}
-        addTitle={'Add New Tech Deaprtment'}
+        addTitle={'Add Tech Deaprtment'}
         name={'Tech Department'}
         inputValue={projectStatus}
         setInputValue={setProjectStatus}

@@ -6,6 +6,7 @@ import { GET_PROJECT_NAME, ADD_PROJECT_NAME, DELETE_PROJECT_NAME } from '../../.
 import edit from '../../../../assests/edit.svg';
 import deleteIcon from '../../../../assests/deleteNew.svg';
 import Pagination from '../../../common/Pagination';
+import { sweetAlertComponent } from '../../../../components/common/Alert';
 
 const ProjectName = () => {
   const [tableInfo, setTableInfo] = useState([]);
@@ -55,24 +56,45 @@ const ProjectName = () => {
       };
       if (!isEdit) {
         setLoading(true);
-        await ADD_PROJECT_NAME(body).then((res) => {
-          setError('');
-        });
-        await GET_PROJECT_NAME(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-        });
+        await ADD_PROJECT_NAME(body)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Project Name Added');
+            if (res?.data?.statusCode == 204) {
+              sweetAlertComponent('error', 'Project name already exsist');
+            }
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_PROJECT_NAME(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
         setLoading(false);
       } else {
         setLoading(true);
-        await ADD_PROJECT_NAME(bodyEdit).then((res) => {
-          setError('');
-        });
-        await GET_PROJECT_NAME(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-          setLoading(false);
-        });
+        await ADD_PROJECT_NAME(bodyEdit)
+          .then((res) => {
+            sweetAlertComponent('success', 'Project Name Updated');
+            setError('');
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_PROJECT_NAME(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+            setLoading(false);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
       }
       setIsEdit(false);
       setProjectStatus('');
@@ -87,11 +109,21 @@ const ProjectName = () => {
 
   const deleteTrigger = async (id) => {
     setLoading(true);
-    await DELETE_PROJECT_NAME(id).then((res) => {});
-    await GET_PROJECT_NAME(pageIndex, pageSize).then((res) => {
-      setTableInfo(res?.data?.data?.results);
-      setTotalPage(res?.data?.data?.totalItems);
-    });
+    await DELETE_PROJECT_NAME(id)
+      .then((res) => {
+        sweetAlertComponent('success', 'Project Name Deleted');
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
+    await GET_PROJECT_NAME(pageIndex, pageSize)
+      .then((res) => {
+        setTableInfo(res?.data?.data?.results);
+        setTotalPage(res?.data?.data?.totalItems);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
     setLoading(false);
   };
 
@@ -142,9 +174,7 @@ const ProjectName = () => {
         setLoading(false);
       })
       .catch((err) => {
-        if (err) {
-          <Alert variant={'danger'}>Somethig went wrong</Alert>;
-        }
+        sweetAlertComponent('error', 'Something went wrong');
       });
   }, [pageIndex]);
 
@@ -156,7 +186,6 @@ const ProjectName = () => {
 
   useEffect(() => {
     setTotalPage(totalPage);
-    console.log(totalPage);
   }, [totalPage]);
 
   return (

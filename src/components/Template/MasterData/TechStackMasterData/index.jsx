@@ -13,6 +13,8 @@ import edit from '../../../../assests/edit.svg';
 import deleteIcon from '../../../../assests/deleteNew.svg';
 import Pagination from '../../../common/Pagination';
 
+import { sweetAlertComponent } from '../../../../components/common/Alert';
+
 const TechStackMasterData = () => {
   const [tableInfo, setTableInfo] = useState([]);
   const [projectStatus, setProjectStatus] = useState('');
@@ -44,7 +46,7 @@ const TechStackMasterData = () => {
         setSelectedValue(res?.data?.data[0].id);
       })
       .catch((err) => {
-        alert(err);
+        sweetAlertComponent('error', 'Something went wrong');
       });
   }, []);
 
@@ -81,24 +83,45 @@ const TechStackMasterData = () => {
       };
       if (!isEdit) {
         setLoading(true);
-        await ADD_TECH_STACK(body).then((res) => {
-          setError('');
-        });
-        await GET_TECH_STACK(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-        });
+        await ADD_TECH_STACK(body)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Tech stack added');
+            if (res?.data?.statusCode == 204) {
+              sweetAlertComponent('error', 'Tech Department already exsist');
+            }
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_TECH_STACK(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
         setLoading(false);
       } else {
         setLoading(true);
-        await ADD_TECH_STACK(bodyEdit).then((res) => {
-          setError('');
-        });
-        await GET_TECH_STACK(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-          setLoading(false);
-        });
+        await ADD_TECH_STACK(bodyEdit)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Tech stack updated');
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_TECH_STACK(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+            setLoading(false);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
       }
       setIsEdit(false);
       setProjectStatus('');
@@ -113,11 +136,21 @@ const TechStackMasterData = () => {
 
   const deleteTrigger = async (id) => {
     setLoading(true);
-    await DELETE_TECH_STACK(id).then((res) => {});
-    await GET_TECH_STACK(pageIndex, pageSize).then((res) => {
-      setTableInfo(res?.data?.data?.results);
-      setTotalPage(res?.data?.data?.totalItems);
-    });
+    await DELETE_TECH_STACK(id)
+      .then((res) => {
+        sweetAlertComponent('success', 'Tech stack deleted');
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
+    await GET_TECH_STACK(pageIndex, pageSize)
+      .then((res) => {
+        setTableInfo(res?.data?.data?.results);
+        setTotalPage(res?.data?.data?.totalItems);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
     setLoading(false);
   };
 

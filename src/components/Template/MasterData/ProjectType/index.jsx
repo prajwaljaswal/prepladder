@@ -6,6 +6,7 @@ import { GET_PROJECT_TYPE, ADD_PROJECT_TYPE, DELETE_PROJECT_TYPE } from '../../.
 import edit from '../../../../assests/edit.svg';
 import deleteIcon from '../../../../assests/deleteNew.svg';
 import Pagination from '../../../common/Pagination';
+import { sweetAlertComponent } from '../../../../components/common/Alert';
 
 const ProjectType = () => {
   const [tableInfo, setTableInfo] = useState([]);
@@ -55,24 +56,46 @@ const ProjectType = () => {
       };
       if (!isEdit) {
         setLoading(true);
-        await ADD_PROJECT_TYPE(body).then((res) => {
-          setError('');
-        });
-        await GET_PROJECT_TYPE(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-        });
+        await ADD_PROJECT_TYPE(body)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Project type added');
+
+            if (res?.data?.statusCode == 204) {
+              sweetAlertComponent('error', 'Project type already exsist');
+            }
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_PROJECT_TYPE(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
         setLoading(false);
       } else {
         setLoading(true);
-        await ADD_PROJECT_TYPE(bodyEdit).then((res) => {
-          setError('');
-        });
-        await GET_PROJECT_TYPE(pageIndex, pageSize).then((res) => {
-          setTableInfo(res?.data?.data?.results);
-          setTotalPage(res?.data?.data?.totalItems);
-          setLoading(false);
-        });
+        await ADD_PROJECT_TYPE(bodyEdit)
+          .then((res) => {
+            setError('');
+            sweetAlertComponent('success', 'Project type updated');
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
+        await GET_PROJECT_TYPE(pageIndex, pageSize)
+          .then((res) => {
+            setTableInfo(res?.data?.data?.results);
+            setTotalPage(res?.data?.data?.totalItems);
+            setLoading(false);
+          })
+          .catch((err) => {
+            sweetAlertComponent('error', 'Something went wrong');
+          });
       }
       setIsEdit(false);
       setProjectStatus('');
@@ -87,11 +110,21 @@ const ProjectType = () => {
 
   const deleteTrigger = async (id) => {
     setLoading(true);
-    await DELETE_PROJECT_TYPE(id).then((res) => {});
-    await GET_PROJECT_TYPE(pageIndex, pageSize).then((res) => {
-      setTableInfo(res?.data?.data?.results);
-      setTotalPage(res?.data?.data?.totalItems);
-    });
+    await DELETE_PROJECT_TYPE(id)
+      .then((res) => {
+        sweetAlertComponent('success', 'Project type deleted');
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
+    await GET_PROJECT_TYPE(pageIndex, pageSize)
+      .then((res) => {
+        setTableInfo(res?.data?.data?.results);
+        setTotalPage(res?.data?.data?.totalItems);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
     setLoading(false);
   };
 
@@ -142,9 +175,7 @@ const ProjectType = () => {
         setLoading(false);
       })
       .catch((err) => {
-        if (err) {
-          <Alert variant={'danger'}>Somethig went wrong</Alert>;
-        }
+        sweetAlertComponent('error', 'Something went wrong');
       });
   }, [pageIndex]);
 
@@ -156,14 +187,13 @@ const ProjectType = () => {
 
   useEffect(() => {
     setTotalPage(totalPage);
-    console.log(totalPage);
   }, [totalPage]);
 
   return (
     <div className="container">
       <Heading
         title={'Project Type'}
-        addTitle={'Add New Project Type'}
+        addTitle={'Add Project Type'}
         name={'Project Type'}
         inputValue={projectStatus}
         setInputValue={setProjectStatus}

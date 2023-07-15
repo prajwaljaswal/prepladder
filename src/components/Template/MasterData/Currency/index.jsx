@@ -6,6 +6,7 @@ import { GET_CURRENCY, ADD_CURRENCY, DELETE_CURRENCY } from '../../../../api/API
 import edit from '../../../../assests/edit.svg';
 import deleteIcon from '../../../../assests/deleteNew.svg';
 import Pagination from '../../../common/Pagination';
+import { sweetAlertComponent } from '../../../../components/common/Alert';
 
 const Currency = () => {
   const [tableInfo, setTableInfo] = useState([]);
@@ -67,8 +68,17 @@ const Currency = () => {
       if (!isEdit) {
         setLoading(true);
         await ADD_CURRENCY(formData).then((res) => {
+          sweetAlertComponent('success', 'Currency added');
           setError('');
           setImageError('');
+
+          if (res?.data?.statusCode == 204) {
+            sweetAlertComponent('error', 'Currency already exsist');
+          }
+
+          if (res?.data?.statusCode == 500) {
+            sweetAlertComponent('error', 'Something went wrong');
+          }
         });
         await GET_CURRENCY(pageIndex, pageSize).then((res) => {
           setTableInfo(res?.data?.data?.results);
@@ -78,6 +88,12 @@ const Currency = () => {
       } else {
         setLoading(true);
         await ADD_CURRENCY(formData).then((res) => {
+          if (res?.data?.statusCode == 500) {
+            sweetAlertComponent('error', 'Something went wrong');
+          } else {
+            sweetAlertComponent('success', 'Currency updated');
+          }
+
           setError('');
           setImage('');
           setImageError('');
@@ -101,11 +117,21 @@ const Currency = () => {
 
   const deleteTrigger = async (id) => {
     setLoading(true);
-    await DELETE_CURRENCY(id).then((res) => {});
-    await GET_CURRENCY(pageIndex, pageSize).then((res) => {
-      setTableInfo(res?.data?.data?.results);
-      setTotalPage(res?.data?.data?.totalItems);
-    });
+    await DELETE_CURRENCY(id)
+      .then((res) => {
+        sweetAlertComponent('success', 'currency deleted');
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
+    await GET_CURRENCY(pageIndex, pageSize)
+      .then((res) => {
+        setTableInfo(res?.data?.data?.results);
+        setTotalPage(res?.data?.data?.totalItems);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'Something went wrong');
+      });
     setLoading(false);
   };
 
@@ -170,9 +196,7 @@ const Currency = () => {
         setLoading(false);
       })
       .catch((err) => {
-        if (err) {
-          <Alert variant={'danger'}>Somethig went wrong</Alert>;
-        }
+        sweetAlertComponent('error', 'Something went wrong');
       });
   }, [pageIndex]);
 
@@ -186,7 +210,6 @@ const Currency = () => {
 
   useEffect(() => {
     setTotalPage(totalPage);
-    console.log(totalPage);
   }, [totalPage]);
 
   return (

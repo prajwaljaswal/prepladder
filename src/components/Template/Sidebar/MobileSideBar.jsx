@@ -5,6 +5,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import dashboard from '../../../assests/dashboard.svg';
 import Accordion from './Accordion';
 import { useNavigate } from 'react-router-dom';
+import { RxHamburgerMenu } from 'react-icons/rx';
 
 const MobileSidebar = () => {
   const [show, setShow] = useState(false);
@@ -17,7 +18,7 @@ const MobileSidebar = () => {
   return (
     <div className="container">
       <Button variant="primary" onClick={handleShow} className="menu-button">
-        Menu
+        <RxHamburgerMenu />
       </Button>
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header className="drawer-background" closeButton></Offcanvas.Header>

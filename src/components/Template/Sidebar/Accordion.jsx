@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IoIosRadioButtonOff } from 'react-icons/io';
+import { IoIosRadioButtonOff, IoIosRadioButtonOn } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
 import { RiArrowDropDownLine, RiArrowDropUpLine } from 'react-icons/ri';
@@ -55,13 +55,23 @@ const Accordion = ({ projectManagementHeading, masterDataHeading, masterDataFiel
 
   return (
     <div>
-      <div onClick={projectManagementSetting} className="project-management-heading">
+      <div
+        onClick={projectManagementSetting}
+        className={
+          projectManagement ? 'project-management-heading accordion-element-class' : 'project-management-heading'
+        }
+      >
         <div>{projectManagementHeading}</div>
         <div>{projectManagement ? <RiArrowDropDownLine size={'25px'} /> : <RiArrowDropUpLine size={'25px'} />}</div>
       </div>
-      <div onClick={masterDataSetting} className="d-flex">
-        <div className={`${projectManagement ? 'master-data-heading' : ''}`}>
-          {projectManagement ? masterDataHeading : ''}
+      <div onClick={masterDataSetting} className={masterData ? 'd-flex accordion-element-class' : 'd-flex'}>
+        <div
+          className={`${
+            projectManagement ? 'master-data-heading d-flex gap-2 project-management-heading' : 'd-flex gap-2'
+          }`}
+        >
+          {masterData ? <IoIosRadioButtonOn /> : projectManagement && <IoIosRadioButtonOff />}
+          <div> {projectManagement ? masterDataHeading : ''}</div>
         </div>
         <div className={!projectManagement ? 'd-none' : 'master-data-heading'}>
           {masterData ? <RiArrowDropDownLine size={'25px'} /> : <RiArrowDropUpLine size={'25px'} />}

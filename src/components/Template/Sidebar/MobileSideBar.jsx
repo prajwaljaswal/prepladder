@@ -9,6 +9,9 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 
 const MobileSidebar = () => {
   const [show, setShow] = useState(false);
+  const [activeElement, setActiveElement] = useState(0);
+  const [projectManagement, setProjectManagement] = useState(false);
+  const [masterData, setMasterData] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,13 +26,22 @@ const MobileSidebar = () => {
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header className="drawer-background" closeButton></Offcanvas.Header>
         <Offcanvas.Body className="drawer-background">
-          <div>
+          <div className="sticky">
             <div>
               <div className="sidebar-element">
                 <div>
                   <img src={dashboard} alt="dashboard" />
                 </div>
-                <div style={{ fontSize: '16px' }} onClick={() => navigate('/searchPage')}>
+                <div
+                  style={{ fontSize: '16px' }}
+                  className={activeElement == 0 && 'accordion-element-class'}
+                  onClick={() => {
+                    navigate('/searchPage');
+                    setActiveElement(0);
+                    setProjectManagement(!projectManagement);
+                    setMasterData(!masterData);
+                  }}
+                >
                   Dashboard
                 </div>
               </div>
@@ -40,7 +52,13 @@ const MobileSidebar = () => {
                 <div>
                   <img src={dashboard} alt="dashboard" />
                 </div>
-                <Accordion projectManagementHeading={'Project Management'} masterDataHeading={'Master Data'} />
+                <Accordion
+                  setActiveElement={setActiveElement}
+                  projectManagementHeading={'Project Management'}
+                  masterDataHeading={'Master Data'}
+                  projectManagementSidebar={projectManagement}
+                  masterDataSidebar={masterData}
+                />
               </div>
             </div>
             <div>
@@ -48,7 +66,17 @@ const MobileSidebar = () => {
                 <div>
                   <img src={dashboard} alt="dashboard" />
                 </div>
-                <div style={{ fontSize: '16px' }}>All projects</div>
+                <div
+                  style={{ fontSize: '16px' }}
+                  className={activeElement == 1 && 'accordion-element-class'}
+                  onClick={() => {
+                    setActiveElement(1);
+                    setProjectManagement(!projectManagement);
+                    setMasterData(!masterData);
+                  }}
+                >
+                  All projects
+                </div>
               </div>
             </div>
           </div>

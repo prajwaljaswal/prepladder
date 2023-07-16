@@ -26,7 +26,7 @@ const ProjectResource = () => {
           <Col>
             <div className="d-flex justify-content-between">
               <div className="resource-core">Core Resources</div>
-              <div className="btn btn-primary">Add New</div>
+              <div id="btn-primary">Add New</div>
             </div>
           </Col>
         </Row>
@@ -118,7 +118,7 @@ const ProjectResource = () => {
           <Col>
             <div className="d-flex justify-content-between">
               <div className="resource-core">Shadow Resources</div>
-              <div className="btn btn-primary">Add New</div>
+              <div id="btn-primary">Add New</div>
             </div>
           </Col>
         </Row>
@@ -210,7 +210,7 @@ const ProjectResource = () => {
           <Col>
             <div className="d-flex justify-content-between">
               <div className="resource-core">Support Resources</div>
-              <div className="btn btn-primary">Add New</div>
+              <div id="btn-primary">Add New</div>
             </div>
           </Col>
         </Row>

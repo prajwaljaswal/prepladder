@@ -7,7 +7,7 @@ const CancelAndSave = ({ submit, cancel, edit, clearFile }) => {
         Cancel
       </button>
       <button
-        className="btn btn-primary"
+        id="btn-primary"
         onClick={() => {
           submit();
           if (clearFile) {

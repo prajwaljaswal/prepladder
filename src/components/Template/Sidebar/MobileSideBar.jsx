@@ -1,45 +1,58 @@
 import React, { useState } from 'react';
-import { Button, Drawer } from 'antd';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
+import dashboard from '../../../assests/dashboard.svg';
+import Accordion from './Accordion';
+import { useNavigate } from 'react-router-dom';
 
 const MobileSidebar = () => {
-  const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
 
-  const showDrawer = () => {
-    setOpen(true);
-  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  const onClose = () => {
-    setOpen(false);
-  };
+  const navigate = useNavigate();
+
   return (
     <div className="container">
-      <Drawer placement="left" className="drawer-background" onClose={onClose} open={open}>
-        <div>
-          <div>
-            <div className="sidebar-element">
-              <div>Image</div>
-              <div>Dashboard</div>
-            </div>
-          </div>
-
-          <div>
-            <div className="sidebar-element">
-              <div>Image</div>
-              <div>Projects Management</div>
-            </div>
-          </div>
-          <div>
-            <div className="sidebar-element">
-              <div>Image</div>
-              <div>All projects</div>
-            </div>
-          </div>
-        </div>
-      </Drawer>
-
-      <Button type="primary" className="menu-button" onClick={showDrawer}>
+      <Button variant="primary" onClick={handleShow} className="menu-button">
         Menu
       </Button>
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header className="drawer-background" closeButton></Offcanvas.Header>
+        <Offcanvas.Body className="drawer-background">
+          <div>
+            <div>
+              <div className="sidebar-element">
+                <div>
+                  <img src={dashboard} alt="dashboard" />
+                </div>
+                <div style={{ fontSize: '16px' }} onClick={() => navigate('/searchPage')}>
+                  Dashboard
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="sidebar-element">
+                <div>
+                  <img src={dashboard} alt="dashboard" />
+                </div>
+                <Accordion projectManagementHeading={'Project Management'} masterDataHeading={'Master Data'} />
+              </div>
+            </div>
+            <div>
+              <div className="sidebar-element">
+                <div>
+                  <img src={dashboard} alt="dashboard" />
+                </div>
+                <div style={{ fontSize: '16px' }}>All projects</div>
+              </div>
+            </div>
+          </div>
+        </Offcanvas.Body>
+      </Offcanvas>
     </div>
   );
 };

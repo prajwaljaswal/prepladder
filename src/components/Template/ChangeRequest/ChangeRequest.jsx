@@ -13,7 +13,7 @@ const ChangeRequest = () => {
       <div className="container mt-3">
         <Row>
           <Col className="d-flex justify-content-end">
-            <div className="btn btn-primary">Add CR</div>
+            <div id="btn-primary">Add CR</div>
           </Col>
         </Row>
 

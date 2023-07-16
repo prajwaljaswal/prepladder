@@ -140,7 +140,7 @@ const AddProjectDomain = () => {
           updationdate: <span>{result.updatedDate}</span>,
           action: (
             <span>
-              <div className="d-flex justify-content-center  gap-2">
+              <div className="d-flex justify-content-center gap-2">
                 <div onClick={() => editTable(result.name, result.id)}>
                   <img src={edit} alt="edit" />
                 </div>

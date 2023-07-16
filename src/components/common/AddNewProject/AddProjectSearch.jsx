@@ -11,7 +11,7 @@ const AddProjectSearch = () => {
       <div className="new-project-container">
         <div className="project-title">Projects</div>
         <div className="project-subTitle">
-          <div onClick={() => navigate('/searchPage/dashboard')} className="btn btn-primary">
+          <div onClick={() => navigate('/searchPage/dashboard')} id="btn-primary">
             Add Project
           </div>
         </div>

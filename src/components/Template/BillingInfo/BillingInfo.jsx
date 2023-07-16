@@ -13,7 +13,7 @@ const BillingInfo = () => {
       <div className="container mt-3">
         <Row>
           <Col className="d-flex justify-content-end">
-            <div className="btn btn-primary">Add New</div>
+            <div id="btn-primary">Add New</div>
           </Col>
         </Row>
         <Row>
@@ -54,7 +54,7 @@ const BillingInfo = () => {
 
         <Row>
           <Col className="d-flex justify-content-end">
-            <div className="btn btn-primary">Save</div>
+            <div id="btn-primary">Save</div>
           </Col>
         </Row>
 

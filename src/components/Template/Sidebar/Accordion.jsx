@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoIosRadioButtonOff, IoIosRadioButtonOn } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
 import { RiArrowDropDownLine, RiArrowDropUpLine } from 'react-icons/ri';
 
-const Accordion = ({ projectManagementHeading, masterDataHeading, masterDataFields }) => {
+const Accordion = ({
+  projectManagementHeading,
+  masterDataHeading,
+  setActiveElement,
+  projectManagementSidebar,
+  masterDataSidebar,
+}) => {
   const [projectManagement, setProjectManagement] = useState(false);
   const [masterData, setMasterData] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState(null);
 
+  useEffect(() => {
+    setProjectManagement(false);
+    setMasterData(false);
+  }, [masterDataSidebar, projectManagementSidebar]);
+
   const masterDataSetting = () => {
+    setActiveElement(null);
     setMasterData(!masterData);
   };
   const projectManagementSetting = () => {
+    setActiveElement(null);
     setProjectManagement(!projectManagement);
     if (masterData === true) {
       setMasterData(false);

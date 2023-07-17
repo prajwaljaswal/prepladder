@@ -3,7 +3,7 @@ import { Outlet, Navigate } from 'react-router-dom';
 import Header from '../../components/Template/header';
 
 const MainLayout = () => {
-  const auth = true;
+  const auth = false;
   return (
     <div>
       {!auth ? (

@@ -160,12 +160,12 @@ const TechStackMasterData = () => {
       results: tableInfo?.map((result, index) => ({
         key: result.id,
         colData: {
-          techDepartment: <span>{result.departName}</span>,
-          techStack: <span>{result.stackName}</span>,
-          createdBy: <span>{result.createdBy}</span>,
-          creationDate: <span>{result.creationDate}</span>,
-          updatedBy: <span>{result.updatedBy}</span>,
-          updationdate: <span>{result.updatedDate}</span>,
+          techDepartment: <span>{result.departName ? result.departName : 'NA'}</span>,
+          techStack: <span>{result.stackName ? result.stackName : 'NA'}</span>,
+          createdBy: <span>{result.createdBy ? result.createdBy : 'NA'}</span>,
+          creationDate: <span>{result.creationDate ? result.creationDate : 'NA'}</span>,
+          updatedBy: <span>{result.updatedBy ? result.updatedBy : 'NA'}</span>,
+          updationdate: <span>{result.updatedDate ? result.updatedDate : 'NA'}</span>,
           action: (
             <span>
               <div className="d-flex justify-content-center  gap-2 action">

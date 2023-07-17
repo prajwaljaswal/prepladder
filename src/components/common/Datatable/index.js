@@ -53,20 +53,6 @@ const DataTable = ({
             </tbody>
           </table>
         ))}
-      {/* {!hidePaginationFromTable && (
-          <div className="row">
-            <div className="col">
-              <Pagination
-                // totalPageCount={totalPageCount}
-                // totalElementCount={totalElementCount}
-                // updatePageNum={updatePageNum}
-                // currentPageNum={currentPageNum}
-                totalItems={200}
-                 itemsPerPage={2} 
-              />
-            </div>
-          </div>
-        )} */}
     </div>
   ) : (
     <>{loading ? <div className="loading">Loading</div> : <h3>No data available for your selection criteria</h3>}</>

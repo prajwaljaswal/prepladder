@@ -26,6 +26,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.action div:hover {
+  cursor: pointer;
+}
+
 #element {
   position: fixed;
 

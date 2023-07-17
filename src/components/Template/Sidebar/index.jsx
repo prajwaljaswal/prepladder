@@ -12,13 +12,12 @@ const Sidebar = () => {
     <div>
       <div className="sidebar sticky">
         <div>
-          <div className="sidebar-element">
+          <div className={activeElement == 0 ? 'sidebar-element accordion-element-class' : 'sidebar-element'}>
             <div>
               <img src={dashboard} alt="dashboard" />
             </div>
             <div
               style={{ fontSize: '16px' }}
-              className={activeElement == 0 && 'accordion-element-class'}
               onClick={() => {
                 navigate('/searchPage');
                 setActiveElement(0);
@@ -46,13 +45,12 @@ const Sidebar = () => {
           </div>
         </div>
         <div>
-          <div className="sidebar-element">
+          <div className={activeElement == 1 ? 'sidebar-element accordion-element-class' : 'sidebar-element'}>
             <div>
               <img src={dashboard} alt="dashboard" />
             </div>
             <div
               style={{ fontSize: '16px' }}
-              className={activeElement == 1 && 'accordion-element-class'}
               onClick={() => {
                 setActiveElement(1);
                 setProjectManagement(!projectManagement);

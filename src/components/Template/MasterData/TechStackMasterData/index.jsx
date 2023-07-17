@@ -22,7 +22,7 @@ const TechStackMasterData = () => {
   const [id, setId] = useState(0);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
-  const [pageSize, setpageSize] = useState(2);
+  const [pageSize, setpageSize] = useState(5);
   const [pageIndex, setpageIndex] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -168,7 +168,7 @@ const TechStackMasterData = () => {
           updationdate: <span>{result.updatedDate}</span>,
           action: (
             <span>
-              <div className="d-flex justify-content-center  gap-2">
+              <div className="d-flex justify-content-center  gap-2 action">
                 <div
                   onClick={() => {
                     editTable(result?.stackId);

@@ -22,6 +22,7 @@ const authenticationParameters = {
 const options = {
   loginType: LoginType.Popup,
   tokenRefreshUri: window.location.origin + '/auth.html',
+  postLogoutRedirectUri: 'https://google.com',
 };
 
 export const authProvider = new MsalAuthProvider(config, authenticationParameters, options);

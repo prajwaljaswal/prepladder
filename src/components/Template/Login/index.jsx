@@ -12,36 +12,7 @@ const Login = () => {
         switch (authenticationState) {
           case AuthenticationState.Authenticated:
             sessionStorage.setItem('token', accountInfo.jwtIdToken);
-            return (
-              <p>
-                <span>Welcome = {accountInfo.account.userName}!</span>
-                <br></br>
-                <span>token = {accountInfo.jwtIdToken}</span>
-                <br></br>
-                <p>
-                  <b>User Role</b>
-                </p>
-                <ul>
-                  {accountInfo.account.idToken.roles &&
-                    accountInfo.account.idToken.roles.map(function (object, i) {
-                      return <li>{object}</li>;
-                    })}
-                </ul>
-                Email Address*
-                {/* <span>token =  {accountInfo.idToken}</span>
-          <br></br> */}
-                {/* <br>Roles :</br> */}
-                {/* <p>
-            <ul>
-            {accountInfo.idToken.roles.map(function(object, i){
-              return <li>{object}</li>;
-           })}
-            </ul>
-          </p> */}
-                {navigate('/searchPage')}
-                <button onClick={logout}>Logout</button>
-              </p>
-            );
+            return <>{navigate('/searchPage')}</>;
           case AuthenticationState.Unauthenticated:
             return (
               <div>

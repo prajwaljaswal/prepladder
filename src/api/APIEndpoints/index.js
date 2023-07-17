@@ -1,5 +1,17 @@
 import axios from '../instance';
 
+axios.interceptors.request.use(
+  async (config) => {
+    config.headers = {
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+    };
+    return config;
+  },
+  (error) => {
+    Promise.reject(error);
+  },
+);
+
 export const GET_PROJECT_NAME = (pageIndex, pageSize) =>
   axios.get(`api/MasterData/GetProjectName?pageIndex=${pageIndex}&pageSize=${pageSize}`).then((response) => {
     return response;

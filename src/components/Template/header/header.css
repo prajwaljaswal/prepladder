@@ -18,3 +18,13 @@
 .header-icons img:hover {
   cursor: pointer;
 }
+.login-name {
+  margin-top: 3px;
+  color: white;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+}

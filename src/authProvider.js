@@ -7,10 +7,10 @@ const config = {
     redirectUri: 'http://localhost:3000/callback',
     authority: 'https://login.microsoftonline.com/e8679cd0-0462-4591-bfc5-a55bb33d5560',
   },
-  cache: {
-    cacheLocation: 'localStorage',
-    storeAuthStateInCookie: true,
-  },
+  // cache: {
+  //   cacheLocation: 'localStorage',
+  //   storeAuthStateInCookie: true,
+  // },
 };
 //authority: 'https://login.microsoftonline.com/common',
 // Authentication Parameters

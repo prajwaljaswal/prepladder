@@ -1,56 +1,102 @@
 import React from 'react';
+import { authProvider } from '../../../authProvider';
+import { AzureAD, AuthenticationState } from 'react-aad-msal';
+import logo from '../../../assests/logo.svg';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
-    <div className="LoginPageContainer">
-      <div className="LoginPageInnerContainer">
-        <div className="ImageContianer">
-          <img src="https://i.imgur.com/MYZd7of.png" className="GroupImage" alt="images" />
-        </div>
-        <div className="LoginFormContainer">
-          <div className="LoginFormInnerContainer">
-            <div className="LogoContainer">
-              <img
-                src="https://www.pngkey.com/png/full/529-5291672_sample-logo-png-transparent-background.png"
-                className="logo"
-                alt="images"
-              />
-            </div>
-            <header className="header">Log in</header>
-            <header className="subHeader">
-              Welcome to <b>animal planet!</b> Please Enter your Details
-            </header>
+    <AzureAD provider={authProvider} forceLogin={false}>
+      {({ login, logout, authenticationState, error, accountInfo }) => {
+        switch (authenticationState) {
+          case AuthenticationState.Authenticated:
+            sessionStorage.setItem('token', accountInfo.jwtIdToken);
+            return (
+              <p>
+                <span>Welcome = {accountInfo.account.userName}!</span>
+                <br></br>
+                <span>token = {accountInfo.jwtIdToken}</span>
+                <br></br>
+                <p>
+                  <b>User Role</b>
+                </p>
+                <ul>
+                  {accountInfo.account.idToken.roles &&
+                    accountInfo.account.idToken.roles.map(function (object, i) {
+                      return <li>{object}</li>;
+                    })}
+                </ul>
+                Email Address*
+                {/* <span>token =  {accountInfo.idToken}</span>
+          <br></br> */}
+                {/* <br>Roles :</br> */}
+                {/* <p>
+            <ul>
+            {accountInfo.idToken.roles.map(function(object, i){
+              return <li>{object}</li>;
+           })}
+            </ul>
+          </p> */}
+                {navigate('/searchPage')}
+                <button onClick={logout}>Logout</button>
+              </p>
+            );
+          case AuthenticationState.Unauthenticated:
+            return (
+              <div>
+                <div className="LoginPageContainer">
+                  <div className="LoginPageInnerContainer">
+                    <div className="ImageContianer">
+                      <img src="https://i.imgur.com/MYZd7of.png" className="GroupImage" alt="images" />
+                    </div>
+                    <div className="LoginFormContainer">
+                      <div className="LoginFormInnerContainer">
+                        <div className="LogoContainer">
+                          <img src={logo} className="logo" alt="images" />
+                        </div>
+                        <header className="header">Log in</header>
+                        <header className="subHeader">
+                          Welcome to <b>Project Management System!</b> Please Enter your Details
+                        </header>
 
-            <form>
-              <div className="inputContainer">
-                <label className="label" for="emailAddress">
-                  <img src="https://i.imgur.com/Hn13wvm.png" className="labelIcon" alt="images" />
-                  <span>Email Address*</span>
-                </label>
-                <input type="email" className="input" id="emailAddress" placeholder="Enter your Email Address" />
-              </div>
-              <div className="inputContainer">
-                <label className="label" for="emailAddress">
-                  <img src="https://i.imgur.com/g5SvdfG.png" className="labelIcon" alt="images" />
-                  <span>Password*</span>
-                </label>
-                <input type="password" className="input" id="emailAddress" placeholder="Enter your Password" />
-              </div>
-              <div className="OptionsContainer">
-                <div className="checkboxContainer">
-                  <input type="checkbox" id="RememberMe" className="checkbox" />{' '}
-                  <label for="RememberMe">Remember me</label>
+                        {error && (
+                          <p>
+                            <span>An error occured during authentication, please try again!</span>
+                          </p>
+                        )}
+                        <button className="LoginButton" onClick={login}>
+                          Login Using Microsoft
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <a href="#" className="ForgotPasswordLink">
-                  Forgot Password?
-                </a>
               </div>
-              <button className="LoginButton">Login</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+            );
+          case AuthenticationState.InProgress:
+            return (
+              <div>
+                <div className="LoginPageContainer">
+                  <div className="LoginPageInnerContainer">
+                    <div className="ImageContianer">
+                      <img src="https://i.imgur.com/MYZd7of.png" className="GroupImage" alt="images" />
+                    </div>
+                    <div className="LoginFormContainer">
+                      <div className="LoginFormInnerContainer">
+                        <div className="LogoContainer">
+                          <img src={logo} className="logo" alt="images" />
+                        </div>
+                        <header className="header">Authenticating...</header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+        }
+      }}
+    </AzureAD>
   );
 };
 

@@ -5,7 +5,7 @@ export default axios.create({
 });
 
 //  instance.interceptors.request.use((config) => {
-//     config.headers = { ...config.headers, Authorization: `Bearer ${"token"}` };
+//     config.headers = { ...config.headers, Authorization: `Bearer ${sessionStorage.getItem("token")}` };
 
 //     return config;
 //   });

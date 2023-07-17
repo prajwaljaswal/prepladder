@@ -19,9 +19,9 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<searchPage />} />
-        </Route>
+        {/* <Route path="/" element={<MainLayout />}>
+          <Route index element={<Login />} />
+        </Route> */}
 
         <Route path="/searchPage" element={<AuthLayout />}>
           <Route index element={<Dashboard />} />

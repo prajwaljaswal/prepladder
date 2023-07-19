@@ -3,10 +3,9 @@ import { MsalAuthProvider, LoginType } from 'react-aad-msal';
 // Msal Configurations
 const config = {
   auth: {
-    clientId: 'c0d70e6f-1e1d-470e-975f-a782d5a6b5a9',
-    redirectUri: 'http://localhost:3000/callback',
-    authority: 'https://login.microsoftonline.com/e8679cd0-0462-4591-bfc5-a55bb33d5560',
-    postLogoutRedirectUri: 'localhost:3000/login',
+    clientId: process.env.REACT_APP_CLIENT_ID,
+    redirectUri: process.env.REACT_APP_REDIRECT_URI,
+    authority: process.env.REACT_APP_AUTHORITY,
   },
   // cache: {
   //   cacheLocation: 'localStorage',
@@ -23,7 +22,6 @@ const authenticationParameters = {
 const options = {
   loginType: LoginType.Popup,
   tokenRefreshUri: window.location.origin + '/auth.html',
-  postLogoutRedirectUri: 'https://google.com',
 };
 
 export const authProvider = new MsalAuthProvider(config, authenticationParameters, options);

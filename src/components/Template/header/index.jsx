@@ -15,7 +15,6 @@ const Header = () => {
   useEffect(() => {
     const token = jwt_decode(sessionStorage.getItem('token'));
     setLoginData(token);
-    console.log(token, token.name, loginData);
   }, []);
 
   const logoutClear = () => {

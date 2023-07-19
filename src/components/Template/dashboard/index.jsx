@@ -6,7 +6,6 @@ import jwt_decode from 'jwt-decode';
 const Dashboard = () => {
   useEffect(() => {
     const token = jwt_decode(sessionStorage.getItem('token'));
-    console.log(token, token.name);
   }, []);
   return (
     <div>

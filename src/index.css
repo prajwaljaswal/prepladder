@@ -21,6 +21,13 @@
 @import '../src/components/common/Datatable/loading.css';
 @import '../src/components/common/MasterData/Heading/Heading.css';
 
+.country-code {
+  border: 1px solid black !important;
+  border-radius: 0px !important;
+  height: 1.9rem !important;
+  width: 96px !important;
+}
+
 @media only screen and (max-width: 800px) {
   /* Force table to not be like tables anymore */
   #no-more-tables table,

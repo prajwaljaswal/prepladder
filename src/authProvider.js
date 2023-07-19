@@ -6,6 +6,7 @@ const config = {
     clientId: 'c0d70e6f-1e1d-470e-975f-a782d5a6b5a9',
     redirectUri: 'http://localhost:3000/callback',
     authority: 'https://login.microsoftonline.com/e8679cd0-0462-4591-bfc5-a55bb33d5560',
+    postLogoutRedirectUri: 'localhost:3000/login',
   },
   // cache: {
   //   cacheLocation: 'localStorage',

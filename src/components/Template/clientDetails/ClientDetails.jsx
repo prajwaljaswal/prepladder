@@ -5,6 +5,9 @@ import { Row, Col } from 'react-bootstrap';
 import Input from '../../common/Input';
 import Select from '../../common/Select';
 import SaveAndContinue from '../../common/SaveAndContinue';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import { ADD_CLIENT_DETAIL } from '../../../api/APIEndpoints';
 
 const ClientDetails = () => {
   return (
@@ -25,7 +28,14 @@ const ClientDetails = () => {
           </Col>
 
           <Col lg={4}>
-            <Input type={'text'} className={'client-input'} />
+            <div className="d-flex">
+              <div style={{ flexGrow: '1' }}>
+                <PhoneInput inputClass="country-code" containerStyle={{ width: '3px' }} enableSearch country={'in'} />
+              </div>
+              <div style={{ flexGrow: '11' }}>
+                <Input type={'text'} />
+              </div>
+            </div>
           </Col>
         </Row>
 

@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AttachmentTable from '../AttachmentTable/AttachmentTable';
 import Uploads from '../../../assests/upload.svg';
 import DashboardTitle from '../../common/DashboardTitle';
 import { Row, Col } from 'react-bootstrap';
 import Input from '../../common/Input';
 import Select from '../../common/Select';
+import { GET_PROJECT_NAME } from '../../../api/APIEndpoints';
 
 import SaveAndContinue from '../../common/SaveAndContinue';
 
 const GeneralInformation = () => {
+  useEffect(() => {
+    GET_PROJECT_NAME().then((res) => {
+      console.log(res);
+    });
+  });
   return (
     <div>
       <DashboardTitle title={'General Information'} />

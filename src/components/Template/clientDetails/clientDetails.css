@@ -1,11 +1,11 @@
 .client-input {
   width: 100%;
-  display: flex;
-  justify-content: flex-start;
+  /* display: flex;
+  justify-content: flex-start; */
 }
 
 .client-col {
-  width: 8rem !important;
+  width: 10rem !important;
 }
 
 .client-ruler {

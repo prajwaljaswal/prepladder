@@ -117,3 +117,9 @@ export const DELETE_TECH_STACK = (id) =>
   axios.delete(`api/MasterData/techStackId?techStackId=${id}`).then((response) => {
     return response;
   });
+
+export const ADD_CLIENT_DETAIL = (body) => {
+  axios.post(`/api/Project/InsUpdClientDetail`, body).then((res) => {
+    return res;
+  });
+};

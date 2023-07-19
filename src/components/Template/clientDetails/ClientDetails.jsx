@@ -43,7 +43,7 @@ const ClientDetails = () => {
                 <PhoneInput inputClass="country-code" containerStyle={{ width: '3px' }} enableSearch country={'in'} />
               </div>
               <div style={{ flexGrow: '11' }}>
-                <Input type={'text'} />
+                <Input type={'text'} style={{ width: '100%' }} />
               </div>
             </div>
           </Col>

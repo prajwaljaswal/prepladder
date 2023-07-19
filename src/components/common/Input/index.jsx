@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Input = ({ type, className, name, inputValue, setInputValue, error }) => {
+const Input = ({ type, className, name, inputValue, setInputValue, error, style }) => {
   return (
     <div>
       <input
+        style={style}
         type={type}
         className={className}
         name={name}

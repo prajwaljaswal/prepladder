@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import DashboardTitle from '../../common/DashboardTitle';
 import { Row, Col } from 'react-bootstrap';
 import Input from '../../common/Input';
@@ -10,6 +9,17 @@ import 'react-phone-input-2/lib/style.css';
 import { ADD_CLIENT_DETAIL } from '../../../api/APIEndpoints';
 
 const ClientDetails = () => {
+  const [clentDetails, setClientDetails] = useState({
+    clientName: '',
+    clientEmailId: '',
+    phoneNumber: '',
+    address: '',
+    communicationModeId: '',
+    communicationMode: '',
+    contactPersonName: '',
+    contactPersonEmailId: '',
+    contactPersonPhoneNumber: '',
+  });
   return (
     <div>
       <DashboardTitle title={'Client Details'} />

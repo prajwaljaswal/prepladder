@@ -4,7 +4,6 @@ const Input = ({ type, className, name, inputValue, setInputValue, error }) => {
   return (
     <div>
       <input
-        style={{ width: '100%' }}
         type={type}
         className={className}
         name={name}

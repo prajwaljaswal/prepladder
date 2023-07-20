@@ -89,7 +89,7 @@ const AddProjectDomain = () => {
           .then((res) => {
             setTableInfo(res?.data?.data?.results);
             setTotalPage(res?.data?.data?.totalItems);
-            console.log(res?.data?.data?.totalItems);
+
             setLoading(false);
           })
           .catch((err) => {

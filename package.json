@@ -20,6 +20,7 @@
     "react-aad-msal": "^2.3.5",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.2",
     "react-icons": "^4.10.1",
     "react-paginate": "^8.2.0",
     "react-phone-input-2": "^2.15.1",

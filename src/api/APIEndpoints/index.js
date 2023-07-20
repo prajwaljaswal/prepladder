@@ -118,8 +118,12 @@ export const DELETE_TECH_STACK = (id) =>
     return response;
   });
 
-export const ADD_CLIENT_DETAIL = (body) => {
-  axios.post(`/api/Project/InsUpdClientDetail`, body).then((res) => {
-    return res;
+export const ADD_CLIENT_DETAILS = (body) =>
+  axios.post(`api/Project/InsUpdClientDetail`, body).then((response) => {
+    return response;
   });
-};
+
+export const GET_COMMUNICATION_MODE = (id) =>
+  axios.get(`api/MasterData/GetCommunicationMode`).then((response) => {
+    return response;
+  });

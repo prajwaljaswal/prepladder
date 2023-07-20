@@ -221,7 +221,6 @@ const TechStackMasterData = () => {
 
   useEffect(() => {
     setTotalPage(totalPage);
-    console.log(totalPage);
   }, [totalPage]);
 
   return (

@@ -10,6 +10,7 @@ const Input = ({ type, className, name, inputValue, setInputValue, error, style 
         name={name}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        required
       />
       <div className="small text-danger">{error}</div>
     </div>

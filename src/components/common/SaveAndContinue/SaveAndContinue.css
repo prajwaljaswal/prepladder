@@ -14,3 +14,23 @@
   align-items: center;
   margin-bottom: 3rem;
 }
+
+#save-button {
+  background-color: #00c2f0;
+  color: #ffffff;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  border: #00c2f0;
+}
+.save-button:hover {
+  cursor: pointer;
+}
+.save-continue:hover {
+  cursor: pointer;
+}

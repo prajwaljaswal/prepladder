@@ -7,7 +7,7 @@ const Select = ({ option, disable, selected, setSelectedValue, optionToShow }) =
       onChange={(e) => setSelectedValue(e.target.value)}
       value={optionToShow}
     >
-      {option.map((data) => {
+      {option?.map((data) => {
         return <option value={data?.id}>{data?.name}</option>;
       })}
     </select>

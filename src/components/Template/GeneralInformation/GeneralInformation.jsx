@@ -5,18 +5,102 @@ import DashboardTitle from '../../common/DashboardTitle';
 import { Row, Col } from 'react-bootstrap';
 import Input from '../../common/Input';
 import Select from '../../common/Select';
-import { GET_PROJECT_NAME } from '../../../api/APIEndpoints';
+import {
+  GET_PROJECT_NAME,
+  GET_PROJECT_TYPE,
+  GET_PROJECT_DOMAIN,
+  GET_CURRENCY,
+  GET_PROJECT_STATUS,
+} from '../../../api/APIEndpoints';
 
 import SaveAndContinue from '../../common/SaveAndContinue';
+import { useState } from 'react';
+import { sweetAlertComponent } from '../../common/Alert';
+
+import axios from 'axios';
 
 const GeneralInformation = () => {
+  const [projectName, setProjectName] = useState([]);
+  const [projectType, setProjectType] = useState([]);
+  const [projectDomain, setProjectDomain] = useState([]);
+  const [currency, setCurrency] = useState([]);
+  const [projectStatus, setProjectStatus] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [projectNameValue, setProjectNameValue] = useState('');
+  const [projectTypeValue, setProjectTypeValue] = useState('');
+  const [projectDomainValue, setProjectDomainValue] = useState('');
+  const [currencyValue, setCurrencyValue] = useState('');
+  const [projectStatusValue, setProjectStatusValue] = useState('');
+  const [estimatedEfforts, setEstimatedEfforts] = useState('');
+
   useEffect(() => {
-    GET_PROJECT_NAME().then((res) => {
-      console.log(res);
-    });
-  });
+    GET_PROJECT_NAME()
+      .then((res) => {
+        setLoading(true);
+        setProjectName(res?.data?.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'something went wrong');
+      });
+
+    GET_PROJECT_TYPE()
+      .then((res) => {
+        setLoading(true);
+        setProjectType(res?.data?.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'something went wrong');
+      });
+
+    GET_PROJECT_DOMAIN()
+      .then((res) => {
+        setLoading(true);
+        setProjectDomain(res?.data?.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'something went wrong');
+      });
+
+    GET_CURRENCY()
+      .then((res) => {
+        setLoading(true);
+        setCurrency(res?.data?.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'something went wrong');
+      });
+
+    GET_PROJECT_STATUS()
+      .then((res) => {
+        setLoading(true);
+        setProjectStatus(res?.data?.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        sweetAlertComponent('error', 'something went wrong');
+      });
+
+    axios
+      .get('https://graph.microsoft.com/v1.0/users', {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div>
+      {loading && <div className="loading"></div>}
       <DashboardTitle title={'General Information'} />
       <div className="container mt-3">
         <Row>
@@ -25,7 +109,7 @@ const GeneralInformation = () => {
           </Col>
 
           <Col lg={4}>
-            <Select option={['Direct Bullion', 'CSM capgemini', 'Chef', 'Tmotion', 'Honkong']} />
+            <Select option={projectName} setSelectedValue={setProjectNameValue} />
           </Col>
 
           <Col lg={2} style={{ width: '8rem' }}>
@@ -33,7 +117,7 @@ const GeneralInformation = () => {
           </Col>
 
           <Col lg={4}>
-            <Select option={['Direct Bullion', 'CSM capgemini', 'Chef', 'Tmotion', 'Honkong']} />
+            <Select option={projectType} setSelectedValue={setProjectTypeValue} />
           </Col>
         </Row>
 
@@ -43,7 +127,7 @@ const GeneralInformation = () => {
           </Col>
 
           <Col lg={4}>
-            <Select option={['Direct Bullion', 'CSM capgemini', 'Chef', 'Tmotion', 'Honkong']} />
+            <Select option={projectDomain} setSelectedValue={setProjectDomainValue} />
           </Col>
 
           <Col lg={2} style={{ width: '8rem' }}>
@@ -57,8 +141,17 @@ const GeneralInformation = () => {
               display: 'flex',
             }}
           >
-            <Input type="text" />
-            <Select option={['Minutes', 'Hour', 'Days', 'Months', 'Years']} />
+            <input type="text" style={{ width: '12rem', height: '1.9rem' }} />
+            <Select
+              option={[
+                { name: 'Minutes', value: 'minutes' },
+                { name: 'Hour', value: 'hours' },
+                { name: 'Days', value: 'days' },
+                { name: 'Months', value: 'months' },
+                { name: 'Years', value: 'years' },
+              ]}
+              setSelectedValue={setEstimatedEfforts}
+            />
           </Col>
         </Row>
 
@@ -82,8 +175,8 @@ const GeneralInformation = () => {
               display: 'flex',
             }}
           >
-            <Select option={['Pounds', 'Dollar', 'EUR', 'INR']} />
-            <Input type="text" style={{ width: '12rem', height: '1.41rem' }} />
+            <Select option={currency} setSelectedValue={setCurrencyValue} />
+            <input type="text" style={{ width: '12rem', height: '1.9rem' }} />
           </Col>
         </Row>
 
@@ -93,7 +186,7 @@ const GeneralInformation = () => {
           </Col>
 
           <Col lg={4}>
-            <Select option={['Direct Bullion', 'CSM capgemini', 'Chef', 'Tmotion', 'Honkong']} />
+            <Select option={projectStatus} setSelectedValue={setProjectStatusValue} />
           </Col>
 
           <Col lg={2} style={{ width: '8rem' }}>
@@ -103,11 +196,11 @@ const GeneralInformation = () => {
           <Col lg={4}>
             <div className="d-flex gap-5">
               <div className="d-flex gap-2">
-                <input type="radio" name="1" />
+                <input type="radio" name="1" value={true} onChange={(e) => alert(e.target.value)} />
                 <span className="ml-4">Yes</span>
               </div>
               <div className="d-flex gap-2">
-                <input type="radio" name="1" />
+                <input type="radio" name="1" value={false} onChange={(e) => alert(e.target.value)} />
                 <span className="ml-4">No</span>
               </div>
             </div>
@@ -135,11 +228,11 @@ const GeneralInformation = () => {
           <Col lg={4}>
             <div className="d-flex gap-5">
               <div className="d-flex gap-2">
-                <input type="radio" name="2" />
+                <input type="radio" name="2" value={true} onChange={(e) => alert(e.target.value)} />
                 <span className="ml-4">Yes</span>
               </div>
               <div className="d-flex gap-2">
-                <input type="radio" name="2" />
+                <input type="radio" name="2" value={false} onChange={(e) => alert(e.target.value)} />
                 <span className="ml-4">No</span>
               </div>
             </div>
@@ -195,7 +288,7 @@ const GeneralInformation = () => {
             <div className="d-flex ">
               <div>Actual Start Date</div>
               <div>
-                <Input type={'checkbox'} />
+                <input type={'checkbox'} />
               </div>
             </div>
           </Col>
@@ -208,7 +301,7 @@ const GeneralInformation = () => {
             <div className="d-flex ">
               <div>Actual End Date</div>
               <div>
-                <Input type={'checkbox'} />
+                <input type={'checkbox'} />
               </div>
             </div>
           </Col>

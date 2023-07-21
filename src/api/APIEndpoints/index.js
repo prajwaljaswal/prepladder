@@ -127,3 +127,13 @@ export const GET_COMMUNICATION_MODE = (id) =>
   axios.get(`api/MasterData/GetCommunicationMode`).then((response) => {
     return response;
   });
+
+export const ADD_GENERAL_INFO = (body) =>
+  axios.post(`api/Project/InsUpdGeneralDetail`, body).then((response) => {
+    return response;
+  });
+
+export const ADD_MEETINGS_DETAILS = (body) =>
+  axios.post(`api/Project/InsUpdMeetings`, body).then((response) => {
+    return response;
+  });

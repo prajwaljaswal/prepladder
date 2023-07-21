@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form';
 
 const ClientDetails = () => {
   const [communicationModeDropDown, setCommunicationModeDropDown] = useState([]);
-  const [communicationModeId, setcommunicationModeId] = useState('');
+  const [communicationModeId, setcommunicationModeId] = useState(null);
 
   const {
     register,
@@ -31,8 +31,10 @@ const ClientDetails = () => {
   const addData = (data) => {
     const newData = {
       ...data,
-      communicationModeId: communicationModeId,
+      projectId: 13,
       publicKey: 'key@123',
+      LanguageId: 1,
+      communicationModeId: Number(communicationModeId),
     };
     ADD_CLIENT_DETAILS(newData)
       .then((res) => {

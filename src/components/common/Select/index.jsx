@@ -6,6 +6,7 @@ const Select = ({ option, disable, selected, setSelectedValue, optionToShow }) =
       style={{ width: '100%', height: '1.90rem' }}
       onChange={(e) => setSelectedValue(e.target.value)}
       value={optionToShow}
+      disabled={disable}
     >
       {option?.map((data) => {
         return <option value={data?.id}>{data?.name}</option>;
